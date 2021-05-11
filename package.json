@@ -1,0 +1,16 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "jest": "^26.6.3",
+    "lerna": "^4.0.0"
+  },
+  "dependencies": {},
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "lerna run dev --parallel"
+  }
+}
