@@ -21,18 +21,18 @@ function Layout({
   return (
     <>
       <BaseStyles />
-      <Box boxShadow="small" variant="light" px={2} py={6}>
+      <Box boxShadow="small" variant="light" px={2} py={[4, 5, 6]}>
         <Box
           container
           display="flex"
           flexDirection="column"
           alignItems="center"
         >
-          <Logo />
-          <Text as="h1" fontSize={6} mt={4} mb={0}>
+          <Logo variant="header" />
+          <Text as="h1" fontSize={[4, 5, 6]} mt={4} mb={0}>
             {title}
           </Text>
-          <Text my={0} fontSize={3}>
+          <Text my={0} fontSize={[2, 3]}>
             {subtitle}
           </Text>
         </Box>

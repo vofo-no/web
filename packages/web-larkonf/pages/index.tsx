@@ -53,22 +53,25 @@ export default function Home(props: HomeProps) {
       </Head>
 
       <main>
-        <Text as="h2" fontSize={4} mt={8} textAlign="center">
+        <Text as="h2" fontSize={[3, 4]} mt={[6, 8]} textAlign="center">
           Program
         </Text>
         {props.program.map((item) => (
           <Box
-            gridTemplateColumns="100px auto"
+            gridTemplateColumns={["80px auto", "100px auto"]}
             display="grid"
             variant="light"
             boxShadow="small"
             key={item.title}
-            p={5}
-            my={3}
+            px={[3, 5]}
+            py={[1, 5]}
+            my={[1, 3]}
           >
-            <Text fontSize={4}>{format(parseISO(item.start), "HH:mm")}</Text>
+            <Text fontSize={[3, 4]}>
+              {format(parseISO(item.start), "HH:mm")}
+            </Text>
             <div>
-              <Text as="h3" fontSize={3} mb={0}>
+              <Text as="h3" fontSize={[2, 3]} mb={0}>
                 {item.title}
               </Text>
               <Text mt={0}>{item.description}</Text>
@@ -76,12 +79,12 @@ export default function Home(props: HomeProps) {
           </Box>
         ))}
 
-        <Text as="h2" fontSize={4} mt={8} textAlign="center">
+        <Text as="h2" fontSize={[3, 4]} mt={[6, 8]} textAlign="center">
           Foredragsholdere
         </Text>
         {props.speakers.map((item) => (
           <Box
-            gridTemplateColumns="250px auto"
+            gridTemplateColumns={["auto", "250px auto"]}
             display="grid"
             variant="light"
             boxShadow="small"
@@ -89,21 +92,25 @@ export default function Home(props: HomeProps) {
             p={5}
             my={3}
           >
-            <img
-              src={builder
-                .image(item.image)
-                .auto("format")
-                .width(200)
-                .height(200)
-                .url()}
-              className={[styles.image, styles.circle].join(" ")}
-              alt={props.image.alt}
-            />
+            <Box mx={["auto", 0]}>
+              <img
+                src={builder
+                  .image(item.image)
+                  .auto("format")
+                  .width(200)
+                  .height(200)
+                  .url()}
+                className={[styles.image, styles.circle].join(" ")}
+                alt={props.image.alt}
+              />
+            </Box>
             <div>
-              <Text as="h3" fontSize={3} mb={0}>
+              <Text as="h3" fontSize={3} mb={0} textAlign={["center", "left"]}>
                 {item.name}
               </Text>
-              <Text mt={0}>{item.title}</Text>
+              <Text mt={0} textAlign={["center", "left"]}>
+                {item.title}
+              </Text>
               <p>{item.bio}</p>
             </div>
           </Box>
