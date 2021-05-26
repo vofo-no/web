@@ -1,9 +1,13 @@
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import { BaseStyles, Box, Logo, Text } from "@vofo-no/design";
-import imageUrlBuilder from "@sanity/image-url";
-import client from "../client";
-
-const builder = imageUrlBuilder(client);
+import {
+  BaseStyles,
+  Box,
+  Logo,
+  Menu,
+  MenuContainer,
+  Text,
+} from "@vofo-no/design";
+import Hero, { HeroProps } from "./Hero";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -12,49 +16,60 @@ interface LayoutProps {
   image: SanityImageSource & { alt: string };
 }
 
-function Layout({
-  children,
-  title,
-  subtitle,
-  image,
-}: LayoutProps): JSX.Element {
+function Layout(props: LayoutProps & HeroProps): JSX.Element {
   return (
     <>
       <BaseStyles />
-      <Box boxShadow="small" variant="light" px={2} py={[4, 5, 6]}>
+      <Box variant="light" boxShadow="small">
         <Box
           container
           display="flex"
-          flexDirection="column"
+          flexDirection="row"
           alignItems="center"
+          justifyContent={["center", "center", "space-between"]}
+          mb={2}
         >
           <Logo variant="header" />
-          <Text as="h1" fontSize={[4, 5, 6]} mt={4} mb={0}>
-            {title}
-          </Text>
-          <Text my={0} fontSize={[2, 3]}>
-            {subtitle}
-          </Text>
+          <MenuContainer>
+            <Menu>
+              <Box flexDirection="row">
+                <a href="#program">Program</a>
+                <a href="#foredragsholdere">Foredragsholdere</a>
+                <a href="#registrer">
+                  <span
+                    style={{
+                      border: "2px solid green",
+                      borderRadius: "5px",
+                      padding: "0.7rem 1.2rem",
+                    }}
+                  >
+                    Registrer deg nå
+                  </span>
+                </a>
+              </Box>
+            </Menu>
+          </MenuContainer>
         </Box>
+        <Hero {...props} />
       </Box>
-      {image && (
-        <img
-          src={builder
-            .image(image)
-            .auto("format")
-            .width(1400)
-            .height(600)
-            .url()}
-          alt={image.alt}
-          style={{ maxWidth: "100%" }}
-        />
-      )}
 
       <Box my={2} container>
-        {children}
+        {props.children}
       </Box>
       <Box variant="dark" mt={4} py={3} px={2}>
-        <Box container>Vofo!</Box>
+        <Box container>
+          <Text textAlign="center">
+            Konferansen arrangeres av{" "}
+            <a href="http://vofo.no">
+              <strong>Voksenopplæringsforbundet</strong>
+            </a>
+          </Text>
+          <Text textAlign="center">
+            <a href="http://vofo.no/om-vofo/personvernerklaering/">
+              Personvernerklæring
+            </a>
+          </Text>
+        </Box>
       </Box>
     </>
   );
