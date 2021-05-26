@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Layout from "../components/Layout";
 import groq from "groq";
 import client from "../client";
@@ -7,6 +6,10 @@ import ProgramList from "../components/ProgramList";
 import { VofoEvent } from "../types";
 import SpeakersList from "../components/SpeakersList";
 import SignUpForm from "../components/SignUpForm";
+import imageUrlBuilder from "@sanity/image-url";
+import { NextSeo } from "next-seo";
+
+const builder = imageUrlBuilder(client);
 
 const larKonfQuery = groq`
 *[_id == "global-config"][0] {
@@ -21,6 +24,31 @@ export async function getStaticProps() {
 }
 
 export default function Home(props: VofoEvent) {
+  const openGraphImages = props.image
+    ? [
+        {
+          url: builder.image(props.image).width(800).height(600).url(),
+          width: 800,
+          height: 600,
+          alt: props.image.alt,
+        },
+        {
+          // Facebook recommended size
+          url: builder.image(props.image).width(1200).height(630).url(),
+          width: 1200,
+          height: 630,
+          alt: props.image.alt,
+        },
+        {
+          // Square 1:1
+          url: builder.image(props.image).width(600).height(600).url(),
+          width: 600,
+          height: 600,
+          alt: props.image.alt,
+        },
+      ]
+    : [];
+
   const start = parseISO(props.schedule.from);
   const end = parseISO(props.schedule.to);
   return (
@@ -31,12 +59,11 @@ export default function Home(props: VofoEvent) {
       start={start}
       end={end}
     >
-      <Head>
-        <title>{props.title}</title>
-        <meta name="description" content={props.description} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+      <NextSeo
+        title={props.title}
+        description={props.description}
+        openGraph={{ images: openGraphImages }}
+      />
       <main>
         <div id="program">
           <ProgramList program={props.program} />
