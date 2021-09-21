@@ -2,11 +2,13 @@
   "name": "root",
   "private": true,
   "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.32.0",
+    "husky": "^7.0.0",
     "jest": "^27.2.1",
-    "lerna": "^4.0.0",
-    "husky": "^7.0.0"
+    "lerna": "^4.0.0"
   },
   "dependencies": {},
   "workspaces": [
