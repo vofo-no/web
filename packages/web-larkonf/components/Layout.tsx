@@ -1,4 +1,3 @@
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import {
   BaseStyles,
   Box,
@@ -7,16 +6,16 @@ import {
   MenuContainer,
   Text,
 } from "@vofo-no/design";
+import { VofoEvent } from "../types";
 import Hero, { HeroProps } from "./Hero";
 
 interface LayoutProps {
   children: React.ReactNode;
-  title: string;
-  subtitle: string;
-  image: SanityImageSource & { alt: string };
 }
 
-function Layout(props: LayoutProps & HeroProps): JSX.Element {
+function Layout(
+  props: LayoutProps & HeroProps & Pick<VofoEvent, "speakers" | "program">
+): JSX.Element {
   return (
     <>
       <BaseStyles />
@@ -33,8 +32,10 @@ function Layout(props: LayoutProps & HeroProps): JSX.Element {
           <MenuContainer>
             <Menu>
               <Box flexDirection="row">
-                <a href="#foredragsholdere">Foredragsholdere</a>
-                <a href="#program">Program</a>
+                {props.speakers && (
+                  <a href="#foredragsholdere">Foredragsholdere</a>
+                )}
+                {props.program && <a href="#program">Program</a>}
                 <a href="#registrer">
                   <span
                     style={{

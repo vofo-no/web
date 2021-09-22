@@ -10,7 +10,7 @@ const builder = imageUrlBuilder(client);
 
 export interface HeroProps {
   title: string;
-  subtitle: string;
+  description: string;
   image?: SanityImageSource & { alt: string };
   start: Date;
   end: Date;
@@ -51,7 +51,13 @@ function TextOnImg({ children }: { children: string }): JSX.Element {
   );
 }
 
-function Hero({ title, subtitle, image, start, end }: HeroProps): JSX.Element {
+function Hero({
+  title,
+  description,
+  image,
+  start,
+  end,
+}: HeroProps): JSX.Element {
   const bgStyle: CSSProperties = {
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -81,7 +87,7 @@ function Hero({ title, subtitle, image, start, end }: HeroProps): JSX.Element {
             <TextOnImg>{title}</TextOnImg>
           </Text>
           <Text my={0} fontSize={[2, 3, 4]}>
-            <TextOnImg>{subtitle}</TextOnImg>
+            <TextOnImg>{description}</TextOnImg>
           </Text>
           <Text fontSize={[3, 4, 5]}>
             <TextOnImg>{humanDateRange(start, end)}</TextOnImg>

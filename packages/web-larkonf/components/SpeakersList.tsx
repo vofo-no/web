@@ -14,7 +14,7 @@ function SpeakersList({ speakers }: Pick<VofoEvent, "speakers">): JSX.Element {
   }
 
   return (
-    <>
+    <div id="foredragsholdere">
       <Subheader>Foredragsholdere</Subheader>
       {speakers.map((item) => (
         <Box
@@ -49,7 +49,7 @@ function SpeakersList({ speakers }: Pick<VofoEvent, "speakers">): JSX.Element {
           </div>
         </Box>
       ))}
-    </>
+    </div>
   );
 }
 

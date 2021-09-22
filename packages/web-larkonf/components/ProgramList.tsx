@@ -10,7 +10,7 @@ function ProgramList({ program }: Pick<VofoEvent, "program">): JSX.Element {
   }
 
   return (
-    <>
+    <div id="program">
       <Subheader>Program</Subheader>
       <Box variant="light" boxShadow="small" py={[1, 2]}>
         {program.map((item) => (
@@ -33,7 +33,7 @@ function ProgramList({ program }: Pick<VofoEvent, "program">): JSX.Element {
           </Box>
         ))}
       </Box>
-    </>
+    </div>
   );
 }
 

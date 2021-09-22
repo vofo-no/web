@@ -52,25 +52,15 @@ export default function Home(props: VofoEvent) {
   const start = parseISO(props.schedule.from);
   const end = parseISO(props.schedule.to);
   return (
-    <Layout
-      title={props.title}
-      subtitle={props.description}
-      image={props.image}
-      start={start}
-      end={end}
-    >
+    <Layout {...props} start={start} end={end}>
       <NextSeo
         title={props.title}
         description={props.description}
         openGraph={{ images: openGraphImages }}
       />
       <main>
-        <div id="foredragsholdere">
-          <SpeakersList speakers={props.speakers} />
-        </div>
-        <div id="program">
-          <ProgramList program={props.program} />
-        </div>
+        <SpeakersList speakers={props.speakers} />
+        <ProgramList program={props.program} />
         <div id="registrer">
           <SignUpForm />
         </div>
