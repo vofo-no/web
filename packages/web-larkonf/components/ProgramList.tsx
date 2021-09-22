@@ -1,11 +1,15 @@
 import { Box, Text } from "@vofo-no/design";
 import format from "date-fns/format";
 import parseISO from "date-fns/parseISO";
-import { VofoEvent } from "../types";
+import { ProgramItem } from "studio/schema";
 import Subheader from "./Subheader";
 
-function ProgramList({ program }: Pick<VofoEvent, "program">): JSX.Element {
-  if (program.length === 0) {
+interface ProgramListProps {
+  program?: Array<ProgramItem>;
+}
+
+function ProgramList({ program }: ProgramListProps): JSX.Element {
+  if (program?.length === 0) {
     return null;
   }
 

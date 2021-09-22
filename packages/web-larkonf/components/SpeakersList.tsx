@@ -1,5 +1,5 @@
 import { Box, Text } from "@vofo-no/design";
-import { VofoEvent } from "../types";
+import { Person } from "studio/schema";
 import Subheader from "./Subheader";
 import imageUrlBuilder from "@sanity/image-url";
 import client from "../client";
@@ -8,7 +8,11 @@ import styles from "./SpeakersList.module.css";
 
 const builder = imageUrlBuilder(client);
 
-function SpeakersList({ speakers }: Pick<VofoEvent, "speakers">): JSX.Element {
+interface SpeakersListProps {
+  speakers?: Array<Person>;
+}
+
+function SpeakersList({ speakers }: SpeakersListProps): JSX.Element {
   if (speakers.length === 0) {
     return null;
   }

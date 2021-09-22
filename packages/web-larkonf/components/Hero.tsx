@@ -5,14 +5,21 @@ import client from "../client";
 import { CSSProperties } from "react";
 import { format, isSameDay, isSameMonth } from "date-fns";
 import nb from "date-fns/locale/nb";
-import { VofoEvent } from "../types";
 
 const builder = imageUrlBuilder(client);
 
-export interface HeroProps
-  extends Pick<VofoEvent, "title" | "description" | "image"> {
+export interface HeroProps {
+  title: string;
+  description?: string;
+  image?: {
+    asset: SanityImageSource;
+    alt: string;
+  };
   start: Date;
   end: Date;
+  venue?: {
+    name?: string;
+  };
 }
 
 function humanDateRange(start: Date, end: Date): string {
@@ -56,6 +63,7 @@ function Hero({
   image,
   start,
   end,
+  venue,
 }: HeroProps): JSX.Element {
   const bgStyle: CSSProperties = {
     backgroundSize: "cover",
@@ -85,11 +93,15 @@ function Hero({
           <Text as="h1" fontSize={[4, 5, 6]} mt={4} mb={0}>
             <TextOnImg>{title}</TextOnImg>
           </Text>
-          <Text my={0} fontSize={[2, 3, 4]}>
+          <Text my={[2, 1, 0]} fontSize={[2, 3, 4]}>
             <TextOnImg>{description}</TextOnImg>
           </Text>
-          <Text fontSize={[3, 4, 5]}>
-            <TextOnImg>{humanDateRange(start, end)}</TextOnImg>
+          <Text fontSize={[2, 3, 4]}>
+            <TextOnImg>
+              {[venue?.name, humanDateRange(start, end)]
+                .filter(Boolean)
+                .join(", ")}
+            </TextOnImg>
           </Text>
         </Box>
       </Box>

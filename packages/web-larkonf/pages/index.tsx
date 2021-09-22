@@ -1,29 +1,25 @@
 import Layout from "../components/Layout";
-import groq from "groq";
 import client from "../client";
 import parseISO from "date-fns/parseISO";
 import ProgramList from "../components/ProgramList";
-import { VofoEvent } from "../types";
 import SpeakersList from "../components/SpeakersList";
 import SignUpForm from "../components/SignUpForm";
 import imageUrlBuilder from "@sanity/image-url";
 import { NextSeo } from "next-seo";
+import { LarKonfQuery, LarKonfQueryResult } from "../queries/larkonfQuery";
 
 const builder = imageUrlBuilder(client);
 
-const larKonfQuery = groq`
-*[_id == "global-config"][0] {
-  larkonfEvent -> { ... }
-}
-`;
-
 export async function getStaticProps() {
-  const props = await client.fetch(larKonfQuery);
+  const props = await client.fetch<LarKonfQueryResult>(LarKonfQuery);
   props;
   return { props: props["larkonfEvent"] };
 }
 
-export default function Home(props: VofoEvent) {
+type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;
+type Props = UnwrapPromise<ReturnType<typeof getStaticProps>>["props"];
+
+export default function Home(props: Props) {
   const openGraphImages = props.image
     ? [
         {

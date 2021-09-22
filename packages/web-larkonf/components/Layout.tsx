@@ -6,16 +6,15 @@ import {
   MenuContainer,
   Text,
 } from "@vofo-no/design";
-import { VofoEvent } from "../types";
 import Hero, { HeroProps } from "./Hero";
 
 interface LayoutProps {
+  speakers?: Array<any>;
+  program?: Array<any>;
   children: React.ReactNode;
 }
 
-function Layout(
-  props: LayoutProps & HeroProps & Pick<VofoEvent, "speakers" | "program">
-): JSX.Element {
+function Layout(props: LayoutProps & HeroProps): JSX.Element {
   return (
     <>
       <BaseStyles />
