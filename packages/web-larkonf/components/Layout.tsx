@@ -33,8 +33,8 @@ function Layout(props: LayoutProps & HeroProps): JSX.Element {
           <MenuContainer>
             <Menu>
               <Box flexDirection="row">
-                <a href="#program">Program</a>
                 <a href="#foredragsholdere">Foredragsholdere</a>
+                <a href="#program">Program</a>
                 <a href="#registrer">
                   <span
                     style={{

@@ -65,11 +65,11 @@ export default function Home(props: VofoEvent) {
         openGraph={{ images: openGraphImages }}
       />
       <main>
-        <div id="program">
-          <ProgramList program={props.program} />
-        </div>
         <div id="foredragsholdere">
           <SpeakersList speakers={props.speakers} />
+        </div>
+        <div id="program">
+          <ProgramList program={props.program} />
         </div>
         <div id="registrer">
           <SignUpForm />
