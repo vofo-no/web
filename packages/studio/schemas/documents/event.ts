@@ -1,3 +1,4 @@
+import { Rule } from "@sanity/types";
 import { MdEvent } from "react-icons/md";
 
 export default {
@@ -10,7 +11,8 @@ export default {
       name: "title",
       type: "string",
       title: "Tittel",
-      validation: (Rule) => Rule.required(),
+      codegen: { required: true },
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: "description",
@@ -21,7 +23,8 @@ export default {
       name: "schedule",
       type: "schedule",
       title: "Tidspunkt",
-      validation: (Rule) => Rule.required(),
+      codegen: { required: true },
+      validation: (Rule: Rule) => Rule.required(),
     },
     { name: "venue", type: "reference", to: { type: "venue" }, title: "Sted" },
     {

@@ -1,3 +1,5 @@
+import { Rule } from "@sanity/types";
+
 export default {
   name: "mainImage",
   type: "image",
@@ -16,7 +18,8 @@ export default {
       title: "Alternativ tekst",
       description:
         "Beskrivelse av bildet er viktig for søkemotorer og universell utforming.",
-      validation: (Rule) =>
+      codegen: { required: true },
+      validation: (Rule: Rule) =>
         Rule.error("Alternativ tekst må oppgis.").required(),
       options: { isHighlighted: true },
     },

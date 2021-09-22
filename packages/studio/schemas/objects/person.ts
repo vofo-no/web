@@ -1,3 +1,5 @@
+import { Rule } from "@sanity/types";
+
 export default {
   name: "person",
   type: "object",
@@ -7,7 +9,8 @@ export default {
       name: "name",
       type: "string",
       title: "Navn",
-      validation: (Rule) => Rule.required(),
+      codegen: { required: true },
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: "title",
