@@ -34,6 +34,13 @@ export default {
       description: "Bilde som kan vises ved presentasjon av arrangementet.",
     },
     {
+      name: "info",
+      title: "Informasjon",
+      description: "Brødtekst med informasjon om arrangementet",
+      type: "array",
+      of: [{ type: "block" }],
+    },
+    {
       name: "speakers",
       type: "array",
       of: [{ type: "person" }],

@@ -76,6 +76,7 @@ function Hero({
           .height(600)
           .url()}")`
       : undefined,
+    marginBottom: "-50px",
   };
 
   return (
@@ -89,6 +90,7 @@ function Hero({
           justifyContent="center"
           py={5}
           minHeight={["300px", "300px", "75vh"]}
+          paddingBottom="50px"
         >
           <Text as="h1" fontSize={[4, 5, 6]} mt={4} mb={0}>
             <TextOnImg>{title}</TextOnImg>

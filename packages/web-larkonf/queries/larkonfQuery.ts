@@ -10,6 +10,7 @@ export const LarKonfQuery = groq`
         program,
         speakers,
         image,
+        info,
         venue -> { name, address }
     }
 }`;
@@ -17,7 +18,13 @@ export const LarKonfQuery = groq`
 export interface LarKonfQueryResult {
   larkonfEvent?: Pick<
     Event,
-    "title" | "description" | "schedule" | "program" | "speakers" | "image"
+    | "title"
+    | "description"
+    | "schedule"
+    | "program"
+    | "speakers"
+    | "image"
+    | "info"
   > & {
     venue?: Pick<Venue, "name" | "address">;
   };

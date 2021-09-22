@@ -80,6 +80,13 @@ export interface Event extends SanityDocument {
   image?: MainImage;
 
   /**
+   * Informasjon — `array`
+   *
+   * Brødtekst med informasjon om arrangementet
+   */
+  info?: Array<SanityKeyed<SanityBlock>>;
+
+  /**
    * Hovedtalere — `array`
    *
    *

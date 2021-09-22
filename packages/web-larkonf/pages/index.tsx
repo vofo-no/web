@@ -5,8 +5,10 @@ import ProgramList from "../components/ProgramList";
 import SpeakersList from "../components/SpeakersList";
 import SignUpForm from "../components/SignUpForm";
 import imageUrlBuilder from "@sanity/image-url";
+import BlockContent from "@sanity/block-content-to-react";
 import { NextSeo } from "next-seo";
 import { LarKonfQuery, LarKonfQueryResult } from "../queries/larkonfQuery";
+import { Box } from "@vofo-no/design";
 
 const builder = imageUrlBuilder(client);
 
@@ -55,6 +57,11 @@ export default function Home(props: Props) {
         openGraph={{ images: openGraphImages }}
       />
       <main>
+        {props.info && (
+          <Box variant="light" boxShadow="small" px={[3, 4]} py={[1, 2]}>
+            <BlockContent blocks={props.info} />
+          </Box>
+        )}
         <SpeakersList speakers={props.speakers} />
         <ProgramList program={props.program} />
         <div id="registrer">
