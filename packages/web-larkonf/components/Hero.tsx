@@ -5,13 +5,12 @@ import client from "../client";
 import { CSSProperties } from "react";
 import { format, isSameDay, isSameMonth } from "date-fns";
 import nb from "date-fns/locale/nb";
+import { VofoEvent } from "../types";
 
 const builder = imageUrlBuilder(client);
 
-export interface HeroProps {
-  title: string;
-  description: string;
-  image?: SanityImageSource & { alt: string };
+export interface HeroProps
+  extends Pick<VofoEvent, "title" | "description" | "image"> {
   start: Date;
   end: Date;
 }

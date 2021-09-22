@@ -1,22 +1,3 @@
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { Event } from "studio/schema";
 
-export interface VofoEvent {
-  title: string;
-  description: string;
-  program: Array<{
-    description: string;
-    start: string;
-    title: string;
-  }>;
-  image: SanityImageSource & { alt: string };
-  speakers: Array<{
-    name: string;
-    title: string;
-    image: SanityImageSource & { alt: string };
-    bio: string;
-  }>;
-  schedule: {
-    from: string;
-    to: string;
-  };
-}
+export interface VofoEvent extends Event {}
