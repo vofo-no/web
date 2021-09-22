@@ -43,7 +43,7 @@ function TextOnImg({ children }: { children: string }): JSX.Element {
         display: "inline",
         padding: "0.5rem 0.7rem",
         boxDecorationBreak: "clone",
-        backgroundColor: "black",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
       }}
     >
       {children}
