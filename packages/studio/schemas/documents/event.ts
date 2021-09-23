@@ -52,6 +52,13 @@ export default {
       title: "Programposter",
       of: [{ type: "programItem" }],
     },
+    {
+      name: "campaign",
+      type: "reference",
+      to: { type: "campaign" },
+      title: "Kampanje",
+      description: "Knytt arrangementet til en kampanje",
+    },
   ],
   preview: {
     select: {

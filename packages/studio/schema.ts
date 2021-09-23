@@ -37,6 +37,36 @@ export type {
 };
 
 /**
+ * Kampanje
+ *
+ *
+ */
+export interface Campaign extends SanityDocument {
+  _type: "campaign";
+
+  /**
+   * Tittel — `string`
+   *
+   *
+   */
+  title: string;
+
+  /**
+   * Merke — `badge`
+   *
+   * Merke som brukes til å synliggjøre produkter tilknyttet kampanjen.
+   */
+  badge?: Badge;
+
+  /**
+   * Lenke til kampanjen — `url`
+   *
+   *
+   */
+  link?: string;
+}
+
+/**
  * Arrangement
  *
  *
@@ -99,6 +129,13 @@ export interface Event extends SanityDocument {
    *
    */
   program?: Array<SanityKeyed<ProgramItem>>;
+
+  /**
+   * Kampanje — `reference`
+   *
+   * Knytt arrangementet til en kampanje
+   */
+  campaign?: SanityReference<Campaign>;
 }
 
 /**
@@ -153,6 +190,20 @@ export interface SiteConfig extends SanityDocument {
    */
   larkonfEvent?: SanityReference<Event>;
 }
+
+export type Badge = {
+  _type: "badge";
+  asset: SanityReference<SanityImageAsset>;
+  crop?: SanityImageCrop;
+  hotspot?: SanityImageHotspot;
+
+  /**
+   * Alternativ tekst — `string`
+   *
+   * Beskrivelse av bildet er viktig for søkemotorer og universell utforming.
+   */
+  alt: string;
+};
 
 export type MainImage = {
   _type: "mainImage";
@@ -254,4 +305,4 @@ export type ProgramItem = {
   level: "default" | "sub";
 };
 
-export type Documents = Event | Venue | SiteConfig;
+export type Documents = Campaign | Event | Venue | SiteConfig;

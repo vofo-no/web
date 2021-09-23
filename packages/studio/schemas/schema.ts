@@ -3,8 +3,10 @@ import createSchema from "part:@sanity/base/schema-creator";
 
 // Then import schema types from any plugins that might expose them
 import schemaTypes from "all:part:@sanity/base/schema-type";
+import campaign from "./documents/campaign";
 import event from "./documents/event";
 import venue from "./documents/venue";
+import badge from "./objects/badge";
 import mainImage from "./objects/mainImage";
 import schedule from "./objects/schedule";
 import person from "./objects/person";
@@ -19,7 +21,9 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     /* Your types here! */
+    campaign,
     event,
+    badge,
     mainImage,
     schedule,
     venue,
