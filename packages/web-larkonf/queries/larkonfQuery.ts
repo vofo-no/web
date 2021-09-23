@@ -11,6 +11,7 @@ export const LarKonfQuery = groq`
         speakers,
         image,
         info,
+        registerUrl,
         venue -> { name, address },
         campaign -> { title, link, badge }
     }
@@ -26,6 +27,7 @@ export interface LarKonfQueryResult {
     | "speakers"
     | "image"
     | "info"
+    | "registerUrl"
   > & {
     venue?: Pick<Venue, "name" | "address">;
     campaign?: Pick<Campaign, "title" | "link" | "badge">;

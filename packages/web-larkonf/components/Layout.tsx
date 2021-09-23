@@ -1,3 +1,5 @@
+import isFuture from "date-fns/isFuture";
+
 import {
   BaseStyles,
   Box,
@@ -11,7 +13,9 @@ import Hero, { HeroProps } from "./Hero";
 interface LayoutProps {
   speakers?: Array<any>;
   program?: Array<any>;
+  registerUrl?: string;
   children: React.ReactNode;
+  start: Date;
 }
 
 function Layout(props: LayoutProps & HeroProps): JSX.Element {
@@ -35,17 +39,20 @@ function Layout(props: LayoutProps & HeroProps): JSX.Element {
                   <a href="#foredragsholdere">Foredragsholdere</a>
                 )}
                 {props.program && <a href="#program">Program</a>}
-                <a href="#registrer">
-                  <span
-                    style={{
-                      border: "2px solid green",
-                      borderRadius: "5px",
-                      padding: "0.7rem 1.2rem",
-                    }}
-                  >
-                    Registrer deg nå
-                  </span>
-                </a>
+                {props.registerUrl && isFuture(props.start) && (
+                  <a href={props.registerUrl} target="_blank">
+                    <Text
+                      as="span"
+                      py={3}
+                      px={4}
+                      style={{ borderRadius: "5px" }}
+                      backgroundColor="primary"
+                      color="white"
+                    >
+                      Registrer deg nå
+                    </Text>
+                  </a>
+                )}
               </Box>
             </Menu>
           </MenuContainer>

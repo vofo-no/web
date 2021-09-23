@@ -3,7 +3,7 @@ import client from "../client";
 import parseISO from "date-fns/parseISO";
 import ProgramList from "../components/ProgramList";
 import SpeakersList from "../components/SpeakersList";
-import SignUpForm from "../components/SignUpForm";
+import SignUpButton from "../components/SignUpButton";
 import imageUrlBuilder from "@sanity/image-url";
 import BlockContent from "@sanity/block-content-to-react";
 import { NextSeo } from "next-seo";
@@ -64,9 +64,7 @@ export default function Home(props: Props) {
         )}
         <SpeakersList speakers={props.speakers} />
         <ProgramList program={props.program} />
-        <div id="registrer">
-          <SignUpForm />
-        </div>
+        <SignUpButton registerUrl={props.registerUrl} start={start} />
       </main>
     </Layout>
   );
