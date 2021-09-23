@@ -5,6 +5,7 @@ import client from "../client";
 import { CSSProperties } from "react";
 import { format, isSameDay, isSameMonth } from "date-fns";
 import nb from "date-fns/locale/nb";
+import CampaignBadge from "./CampaignBadge";
 
 const builder = imageUrlBuilder(client);
 
@@ -19,6 +20,14 @@ export interface HeroProps {
   end: Date;
   venue?: {
     name?: string;
+  };
+  campaign?: {
+    title: string;
+    link?: string;
+    badge?: {
+      asset: SanityImageSource;
+      alt: string;
+    };
   };
 }
 
@@ -64,6 +73,7 @@ function Hero({
   start,
   end,
   venue,
+  campaign,
 }: HeroProps): JSX.Element {
   const bgStyle: CSSProperties = {
     backgroundSize: "cover",
@@ -89,7 +99,7 @@ function Hero({
           alignItems="center"
           justifyContent="center"
           py={5}
-          minHeight={["300px", "300px", "75vh"]}
+          minHeight={["300px", "300px", "750px"]}
           paddingBottom="50px"
         >
           <Text as="h1" fontSize={[4, 5, 6]} mt={4} mb={0}>
@@ -106,6 +116,7 @@ function Hero({
             </TextOnImg>
           </Text>
         </Box>
+        <CampaignBadge campaign={campaign} />
       </Box>
     </>
   );

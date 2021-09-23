@@ -1,5 +1,5 @@
 import groq from "groq";
-import { Event, Venue } from "studio/schema";
+import { Campaign, Event, Venue } from "studio/schema";
 
 export const LarKonfQuery = groq`
 *[_id == "global-config"][0] {
@@ -11,7 +11,8 @@ export const LarKonfQuery = groq`
         speakers,
         image,
         info,
-        venue -> { name, address }
+        venue -> { name, address },
+        campaign -> { title, link, badge }
     }
 }`;
 
@@ -27,5 +28,6 @@ export interface LarKonfQueryResult {
     | "info"
   > & {
     venue?: Pick<Venue, "name" | "address">;
+    campaign?: Pick<Campaign, "title" | "link" | "badge">;
   };
 }

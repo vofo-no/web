@@ -2912,7 +2912,7 @@
   resolved "https://registry.yarnpkg.com/@sanity/icons/-/icons-1.1.7.tgz#f2b6f2d9b68965b6f26975c0d5528ae75e1472d8"
   integrity sha512-5KbAhNowjO94UjIrsaaKCGNLdHs+ek+RF5Bc+XRELOi1TFR0GBG3Wo7LK30df2ajA7TW6HwERLbPQB3sJyMRMQ==
 
-"@sanity/image-url@^0.140.15":
+"@sanity/image-url@^0.140.15", "@sanity/image-url@^0.140.22":
   version "0.140.22"
   resolved "https://registry.yarnpkg.com/@sanity/image-url/-/image-url-0.140.22.tgz#7a65f56bb751f7b1c5dfacfadd34ee10fc4f0fde"
   integrity sha512-CAmQZnj+KM7FSEYiWlIGDit072syicYuAw0w7R2ctMzHiZ4p9mE/g6dBnYqrqFUrw2J+GpJgPt+RVspKP8vdqA==
@@ -10520,6 +10520,13 @@ neo-async@^2.5.0, neo-async@^2.6.0:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
+
+next-sanity-image@^3.1.6:
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/next-sanity-image/-/next-sanity-image-3.1.6.tgz#618781754f31636a42339c479958ecd5e009bdc1"
+  integrity sha512-+DWafmOyS/9EA1tpR/bh2wmz6vBWLm9x1z1i8VJbC54mkqsoODX9xwVX270FL5eazaqPYQjEpnnZkXuv6cwGXw==
+  dependencies:
+    "@sanity/image-url" "^0.140.22"
 
 next-seo@^4.24.0:
   version "4.28.0"
