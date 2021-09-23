@@ -20,13 +20,7 @@ export interface CampaignBadgeProps {
 function CampaignBadge({ campaign }: CampaignBadgeProps): JSX.Element {
   if (!campaign || !campaign.badge) return null;
 
-  const { width, height, ...imageProps } = useNextSanityImage(
-    client,
-    campaign.badge,
-    {
-      enableBlurUp: true,
-    }
-  );
+  const imageProps = useNextSanityImage(client, campaign.badge);
 
   const bagdeStyle: CSSProperties = {
     transform: "rotate(10deg)",
@@ -43,7 +37,12 @@ function CampaignBadge({ campaign }: CampaignBadgeProps): JSX.Element {
     >
       <Link href={campaign.link}>
         <a title={campaign.title}>
-          <Img {...imageProps} layout="fill" objectFit="contain" />
+          <Img
+            src={imageProps.src}
+            loader={imageProps.loader}
+            layout="fill"
+            objectFit="contain"
+          />
         </a>
       </Link>
     </Box>
