@@ -53,6 +53,11 @@ export default {
       of: [{ type: "programItem" }],
     },
     {
+      name: "registerUrl",
+      type: "url",
+      title: "Lenke til påmelding",
+    },
+    {
       name: "campaign",
       type: "reference",
       to: { type: "campaign" },

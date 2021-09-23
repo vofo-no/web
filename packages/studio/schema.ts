@@ -131,6 +131,13 @@ export interface Event extends SanityDocument {
   program?: Array<SanityKeyed<ProgramItem>>;
 
   /**
+   * Lenke til påmelding — `url`
+   *
+   *
+   */
+  registerUrl?: string;
+
+  /**
    * Kampanje — `reference`
    *
    * Knytt arrangementet til en kampanje
