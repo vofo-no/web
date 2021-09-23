@@ -230,7 +230,7 @@ export type ProgramItem = {
    *
    *
    */
-  title?: string;
+  title: string;
 
   /**
    * Kort beskrivelse — `string`
@@ -244,7 +244,14 @@ export type ProgramItem = {
    *
    *
    */
-  start?: string;
+  start: string;
+
+  /**
+   * Nivå — `string`
+   *
+   *
+   */
+  level: "default" | "sub";
 };
 
 export type Documents = Event | Venue | SiteConfig;
