@@ -18,8 +18,8 @@ function SpeakersList({ speakers }: SpeakersListProps): JSX.Element {
   }
 
   return (
-    <div id="foredragsholdere">
-      <Subheader>Foredragsholdere</Subheader>
+    <div id="deltakere">
+      <Subheader>Du møter disse</Subheader>
       {speakers.map((item) => (
         <Box
           gridTemplateColumns={["auto", "250px auto"]}
