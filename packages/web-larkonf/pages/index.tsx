@@ -6,7 +6,7 @@ import SpeakersList from "../components/SpeakersList";
 import SignUpButton from "../components/SignUpButton";
 import imageUrlBuilder from "@sanity/image-url";
 import BlockContent from "@sanity/block-content-to-react";
-import { NextSeo } from "next-seo";
+import { NextSeo, EventJsonLd } from "next-seo";
 import { LarKonfQuery, LarKonfQueryResult } from "../queries/larkonfQuery";
 import { Box } from "@vofo-no/design";
 
@@ -56,6 +56,17 @@ export default function Home(props: Props) {
         description={props.description}
         openGraph={{ images: openGraphImages }}
       />
+      {props.venue?.address && (
+        <EventJsonLd
+          name={props.title}
+          startDate={props.schedule.from}
+          endDate={props.schedule.to}
+          location={{ name: props.venue.name, address: props.venue.address }}
+          images={[builder.image(props.image).width(1200).height(630).url()]}
+          description={props.description}
+          performers={props.speakers.map((speaker) => ({ name: speaker.name }))}
+        />
+      )}
       <main>
         {props.info && (
           <Box variant="light" boxShadow="small" px={[3, 4]} py={[1, 2]}>

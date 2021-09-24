@@ -12,7 +12,15 @@ export const LarKonfQuery = groq`
         image,
         info,
         registerUrl,
-        venue -> { name, address },
+        venue -> {
+          name,
+          address {
+            streetAddress,
+            postalCode,
+            addressLocality,
+            addressCountry
+          }
+        },
         campaign -> { title, link, badge }
     }
 }`;
