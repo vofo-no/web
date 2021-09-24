@@ -7,6 +7,7 @@ import campaign from "./documents/campaign";
 import event from "./documents/event";
 import venue from "./documents/venue";
 import badge from "./objects/badge";
+import address from "./objects/address";
 import mainImage from "./objects/mainImage";
 import schedule from "./objects/schedule";
 import person from "./objects/person";
@@ -24,6 +25,7 @@ export default createSchema({
     campaign,
     event,
     badge,
+    address,
     mainImage,
     schedule,
     venue,

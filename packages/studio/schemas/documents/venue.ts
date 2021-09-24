@@ -13,7 +13,7 @@ export default {
     },
     {
       name: "address",
-      type: "string",
+      type: "address",
       title: "Adresse",
     },
     { name: "position", type: "geopoint", title: "Kartreferanse" },

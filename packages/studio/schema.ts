@@ -161,11 +161,11 @@ export interface Venue extends SanityDocument {
   name?: string;
 
   /**
-   * Adresse — `string`
+   * Adresse — `address`
    *
    *
    */
-  address?: string;
+  address?: Address;
 
   /**
    * Kartreferanse — `geopoint`
@@ -210,6 +210,37 @@ export type Badge = {
    * Beskrivelse av bildet er viktig for søkemotorer og universell utforming.
    */
   alt: string;
+};
+
+export type Address = {
+  _type: "address";
+  /**
+   * Gateadresse — `string`
+   *
+   *
+   */
+  streetAddress: string;
+
+  /**
+   * Postnummer — `string`
+   *
+   *
+   */
+  postalCode: string;
+
+  /**
+   * Poststed — `string`
+   *
+   *
+   */
+  addressLocality: string;
+
+  /**
+   * Land — `string`
+   *
+   *
+   */
+  addressCountry: string;
 };
 
 export type MainImage = {
