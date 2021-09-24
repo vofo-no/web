@@ -29,22 +29,29 @@ function CampaignBadge({ campaign }: CampaignBadgeProps): JSX.Element {
   return (
     <Box
       position="absolute"
-      right={["-20px", "-20px", 4, 10]}
-      width={[150, 200, 300]}
+      right={[0, 0, 0, "10px"]}
+      top={["10px", "-20px", "100px", "120px"]}
+      overflow="hidden"
+      width={[120, 170, 300]}
       height={[150, 200, 300]}
-      marginTop={["-370px", "-410px", "-750px"]}
-      style={bagdeStyle}
     >
-      <Link href={campaign.link}>
-        <a title={campaign.title}>
-          <Img
-            src={imageProps.src}
-            loader={imageProps.loader}
-            layout="fill"
-            objectFit="contain"
-          />
-        </a>
-      </Link>
+      <Box
+        position="relative"
+        width={[150, 200, 300]}
+        height={[150, 200, 300]}
+        style={bagdeStyle}
+      >
+        <Link href={campaign.link}>
+          <a title={campaign.title}>
+            <Img
+              src={imageProps.src}
+              loader={imageProps.loader}
+              layout="fill"
+              objectFit="contain"
+            />
+          </a>
+        </Link>
+      </Box>
     </Box>
   );
 }
