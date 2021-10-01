@@ -99,7 +99,7 @@ function Hero({
           alignItems="center"
           justifyContent="center"
           py={5}
-          minHeight={["300px", "300px", "750px"]}
+          minHeight={["300px", "300px", "500px", "750px"]}
           paddingBottom="50px"
         >
           <Text as="h1" fontSize={[4, 5, 6]} mt={4} mb={0}>

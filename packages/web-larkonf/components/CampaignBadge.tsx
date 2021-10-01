@@ -30,15 +30,15 @@ function CampaignBadge({ campaign }: CampaignBadgeProps): JSX.Element {
     <Box
       position="absolute"
       right={[0, 0, 0, "10px"]}
-      top={["10px", "-20px", "100px", "120px"]}
+      top={["10px", "-20px", "70px", "120px"]}
       overflow="hidden"
-      width={[120, 170, 300]}
-      height={[150, 200, 300]}
+      width={[120, 170, 180, 300]}
+      height={[150, 200, 220, 300]}
     >
       <Box
         position="relative"
-        width={[150, 200, 300]}
-        height={[150, 200, 300]}
+        width={[150, 200, 220, 300]}
+        height={[150, 200, 220, 300]}
         style={bagdeStyle}
       >
         <Link href={campaign.link}>
