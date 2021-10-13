@@ -35,7 +35,7 @@ function Layout(props: LayoutProps & HeroProps): JSX.Element {
           <MenuContainer>
             <Menu>
               <Box flexDirection="row">
-                {props.speakers && <a href="#deltakere">Deltakere</a>}
+                {props.speakers && <a href="#deltakere">Du møter disse</a>}
                 {props.program && <a href="#program">Program</a>}
                 {props.registerUrl && isFuture(props.start) && (
                   <a href={props.registerUrl} target="_blank">
