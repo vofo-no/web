@@ -73,6 +73,7 @@ export default function Home(props: Props) {
             <BlockContent blocks={props.info} />
           </Box>
         )}
+        <SignUpButton registerUrl={props.registerUrl} start={start} />
         <SpeakersList speakers={props.speakers} />
         <ProgramList program={props.program} />
         <SignUpButton registerUrl={props.registerUrl} start={start} />
