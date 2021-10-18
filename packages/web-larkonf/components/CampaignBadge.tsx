@@ -45,6 +45,7 @@ function CampaignBadge({ campaign }: CampaignBadgeProps): JSX.Element {
           <a title={campaign.title}>
             <Img
               src={imageProps.src}
+              alt={campaign.badge.alt}
               loader={imageProps.loader}
               layout="fill"
               objectFit="contain"
