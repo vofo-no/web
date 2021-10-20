@@ -38,16 +38,18 @@ function SpeakersList({ speakers }: SpeakersListProps): JSX.Element {
             my={0}
           >
             <Box mx={["auto", 0]}>
-              <img
-                src={builder
-                  .image(item.image)
-                  .auto("format")
-                  .width(175)
-                  .height(175)
-                  .url()}
-                className={[styles.image, styles.circle].join(" ")}
-                alt={item.image.alt}
-              />
+              {item.image?.asset && (
+                <img
+                  src={builder
+                    .image(item.image)
+                    .auto("format")
+                    .width(175)
+                    .height(175)
+                    .url()}
+                  className={[styles.image, styles.circle].join(" ")}
+                  alt={item.image.alt}
+                />
+              )}
             </Box>
             <div>
               <Text
