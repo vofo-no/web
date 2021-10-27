@@ -11,15 +11,12 @@ function ProgramListEntry({ item }: ProgramListEntryProps): JSX.Element {
   if (item.level === "sub") {
     return (
       <Box
-        gridTemplateColumns={["50px auto", "70px auto"]}
+        gridTemplateColumns={["auto", "auto"]}
         display="grid"
         px={[3, 5]}
         my={[1]}
         ml={["70px", "90px"]}
       >
-        <Text fontSize={[1, 2]} mt={0}>
-          {format(parseISO(item.start), "HH:mm")}
-        </Text>
         <div>
           <Text as="h4" fontSize={[1, 2]} mt={0} mb={0}>
             {item.title}
