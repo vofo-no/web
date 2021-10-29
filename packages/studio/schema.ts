@@ -143,6 +143,13 @@ export interface Event extends SanityDocument {
    * Knytt arrangementet til en kampanje
    */
   campaign?: SanityReference<Campaign>;
+
+  /**
+   * Organisasjoner som bidrar — `array`
+   *
+   *
+   */
+  organizations?: Array<SanityKeyedReference<Organization>>;
 }
 
 /**
@@ -180,6 +187,41 @@ export interface Venue extends SanityDocument {
    *
    */
   image?: MainImage;
+}
+
+/**
+ * Organisasjon
+ *
+ *
+ */
+export interface Organization extends SanityDocument {
+  _type: "organization";
+
+  /**
+   * Navn — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Logo — `image`
+   *
+   *
+   */
+  logo: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Lenke til organisasjonen — `url`
+   *
+   *
+   */
+  link?: string;
 }
 
 /**
@@ -343,4 +385,4 @@ export type ProgramItem = {
   level: "default" | "sub";
 };
 
-export type Documents = Campaign | Event | Venue | SiteConfig;
+export type Documents = Campaign | Event | Venue | Organization | SiteConfig;

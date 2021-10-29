@@ -64,6 +64,17 @@ export default {
       title: "Kampanje",
       description: "Knytt arrangementet til en kampanje",
     },
+    {
+      title: "Organisasjoner som bidrar",
+      name: "organizations",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "organization" }],
+        },
+      ],
+    },
   ],
   preview: {
     select: {

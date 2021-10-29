@@ -13,6 +13,7 @@ import schedule from "./objects/schedule";
 import person from "./objects/person";
 import programItem from "./objects/programItem";
 import siteConfig from "./documents/siteConfig";
+import organization from "./documents/organization";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -29,6 +30,7 @@ export default createSchema({
     mainImage,
     schedule,
     venue,
+    organization,
     person,
     programItem,
     siteConfig,
