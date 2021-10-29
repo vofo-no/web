@@ -9,6 +9,7 @@ import BlockContent from "@sanity/block-content-to-react";
 import { NextSeo, EventJsonLd } from "next-seo";
 import { LarKonfQuery, LarKonfQueryResult } from "../queries/larkonfQuery";
 import { Box } from "@vofo-no/design";
+import OrganizationsLogoBand from "../components/OrganizationsLogoBand";
 
 const builder = imageUrlBuilder(client);
 
@@ -75,6 +76,7 @@ export default function Home(props: Props) {
         )}
         <SignUpButton registerUrl={props.registerUrl} start={start} />
         <SpeakersList speakers={props.speakers} />
+        <OrganizationsLogoBand organizations={props.organizations} />
         <ProgramList program={props.program} />
         <SignUpButton registerUrl={props.registerUrl} start={start} />
       </main>

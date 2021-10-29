@@ -17,7 +17,10 @@ function ProgramList({ program }: ProgramListProps): JSX.Element {
       <Subheader>Program</Subheader>
       <Box variant="light" boxShadow="small" py={[1, 2]}>
         {program.map((item) => (
-          <ProgramListEntry key={item.title} item={item} />
+          <ProgramListEntry
+            key={[item.start, item.title].join("@")}
+            item={item}
+          />
         ))}
       </Box>
     </div>

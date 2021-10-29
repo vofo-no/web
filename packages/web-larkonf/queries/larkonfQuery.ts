@@ -1,5 +1,5 @@
 import groq from "groq";
-import { Campaign, Event, Venue } from "studio/schema";
+import { Campaign, Event, Venue, Organization } from "studio/schema";
 
 export const LarKonfQuery = groq`
 *[_id == "global-config"][0] {
@@ -21,7 +21,8 @@ export const LarKonfQuery = groq`
             addressCountry
           }
         },
-        campaign -> { title, link, badge }
+        campaign -> { title, link, badge },
+        "organizations": organizations[]->{ _id, name, logo, link }
     }
 }`;
 
@@ -39,5 +40,6 @@ export interface LarKonfQueryResult {
   > & {
     venue?: Pick<Venue, "name" | "address">;
     campaign?: Pick<Campaign, "title" | "link" | "badge">;
+    organizations?: Array<Pick<Organization, "name" | "logo" | "link">>;
   };
 }
