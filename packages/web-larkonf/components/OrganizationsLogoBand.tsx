@@ -31,11 +31,12 @@ function OrganizationsLogoBand({
             <Box
               key={item.name}
               m={2}
-              height={120}
+              height={[75, 90, 120]}
+              position="relative"
               display="flex"
               justifyContent="center"
             >
-              <a href={item.link} title={item.name}>
+              <a href={item.link} target="_blank" title={item.name}>
                 <img
                   src={builder
                     .image(item.logo)
@@ -44,6 +45,7 @@ function OrganizationsLogoBand({
                     .height(120)
                     .url()}
                   alt={item.name}
+                  style={{ height: "100%" }}
                 />
               </a>
             </Box>
