@@ -1,45 +1,47 @@
 import { Box, Text } from "@vofo-no/design";
 import format from "date-fns/format";
 import parseISO from "date-fns/parseISO";
-import { ProgramItem } from "studio/schema";
+import { LarKonfQueryResult } from "../queries/larkonfQuery";
+import SpeakerChip from "./SpeakerChip";
+
+type ArrayElement<A> = A extends readonly (infer T)[] ? T : never;
 
 interface ProgramListEntryProps {
-  item: ProgramItem;
+  item: ArrayElement<LarKonfQueryResult["larkonfEvent"]["program"]>;
 }
 
 function ProgramListEntry({ item }: ProgramListEntryProps): JSX.Element {
-  if (item.level === "sub") {
-    return (
-      <Box
-        gridTemplateColumns={["auto", "auto"]}
-        display="grid"
-        px={[3, 5]}
-        my={[1]}
-        ml={["70px", "90px"]}
-      >
-        <div>
-          <Text as="h4" fontSize={[1, 2]} mt={0} mb={0}>
-            {item.title}
-          </Text>
-          {item.description && <Text mt={0}>{item.description}</Text>}
-        </div>
-      </Box>
-    );
-  }
+  const isSub = item.level === "sub";
 
   return (
     <Box
-      gridTemplateColumns={["70px auto", "90px auto"]}
+      gridTemplateColumns={isSub ? "auto" : ["70px auto", "90px auto"]}
       display="grid"
       px={[3, 5]}
-      my={[1, 2]}
+      mt={2}
+      mb={3}
+      ml={isSub ? ["70px", "90px"] : undefined}
     >
-      <Text fontSize={[2, 3]}>{format(parseISO(item.start), "HH:mm")}</Text>
+      {!isSub && (
+        <Text fontSize={[2, 3]}>{format(parseISO(item.start), "HH:mm")}</Text>
+      )}
       <div>
-        <Text as="h3" fontSize={[2, 3]} mb={0}>
+        <Text
+          as={isSub ? "h4" : "h3"}
+          fontSize={isSub ? [1, 2] : [2, 3]}
+          mt={isSub ? 0 : undefined}
+          mb={0}
+        >
           {item.title}
         </Text>
-        {item.description && <Text mt={0}>{item.description}</Text>}
+        {item.description && (
+          <Text mt={0} mb={2}>
+            {item.description}
+          </Text>
+        )}
+        {item.speakers?.map(({ person, role }) => (
+          <SpeakerChip person={person} role={role} key={person._id} />
+        ))}
       </div>
     </Box>
   );

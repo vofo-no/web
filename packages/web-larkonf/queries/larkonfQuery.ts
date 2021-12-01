@@ -1,45 +1,48 @@
 import groq from "groq";
-import { Campaign, Event, Venue, Organization } from "studio/schema";
+import {
+  Campaign,
+  Event,
+  Venue,
+  Organization,
+  ProgramItem,
+  PersonDoc,
+  EventSpeaker,
+} from "studio/schema";
 
 export const LarKonfQuery = groq`
 *[_id == "global-config"][0] {
-    larkonfEvent -> {
+    larkonfEvent->{
         title,
         description,
         schedule,
-        program,
-        speakers,
+        program[]{ ..., speakers[]{ ..., person-> }},
+        mainSpeakers[]{ ..., person-> },
         image,
         info,
         registerUrl,
-        venue -> {
-          name,
-          address {
-            streetAddress,
-            postalCode,
-            addressLocality,
-            addressCountry
-          }
-        },
-        campaign -> { title, link, badge },
-        "organizations": organizations[]->{ _id, name, logo, link }
+        venue->,
+        campaign->,
+        organizations[]->
     }
 }`;
+
+export interface EventSpeakerWithPerson extends Omit<EventSpeaker, "person"> {
+  person: PersonDoc;
+}
+
+export interface ProgramItemWithSpeakers extends Omit<ProgramItem, "speakers"> {
+  speakers?: Array<EventSpeakerWithPerson>;
+}
 
 export interface LarKonfQueryResult {
   larkonfEvent?: Pick<
     Event,
-    | "title"
-    | "description"
-    | "schedule"
-    | "program"
-    | "speakers"
-    | "image"
-    | "info"
-    | "registerUrl"
+    "title" | "description" | "schedule" | "image" | "info" | "registerUrl"
   > & {
-    venue?: Pick<Venue, "name" | "address">;
-    campaign?: Pick<Campaign, "title" | "link" | "badge">;
-    organizations?: Array<Pick<Organization, "name" | "logo" | "link">>;
+    program?: Array<ProgramItemWithSpeakers>;
+    mainSpeakers?: Array<EventSpeakerWithPerson>;
+    venue?: Venue;
+    campaign?: Campaign;
+    organizations?: Array<Organization>;
   };
 }

@@ -1,13 +1,11 @@
 import { Box } from "@vofo-no/design";
-import { ProgramItem } from "studio/schema";
+import { LarKonfQueryResult } from "../queries/larkonfQuery";
 import ProgramListEntry from "./ProgramListEntry";
 import Subheader from "./Subheader";
 
-interface ProgramListProps {
-  program?: Array<ProgramItem>;
-}
-
-function ProgramList({ program }: ProgramListProps): JSX.Element {
+function ProgramList({
+  program,
+}: Pick<LarKonfQueryResult["larkonfEvent"], "program">): JSX.Element {
   if (program?.length === 0) {
     return null;
   }

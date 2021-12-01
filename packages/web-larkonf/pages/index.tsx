@@ -65,7 +65,9 @@ export default function Home(props: Props) {
           location={{ name: props.venue.name, address: props.venue.address }}
           images={[builder.image(props.image).width(1200).height(630).url()]}
           description={props.description}
-          performers={props.speakers.map((speaker) => ({ name: speaker.name }))}
+          performers={props.mainSpeakers.map((speaker) => ({
+            name: speaker.person.name,
+          }))}
         />
       )}
       <main>
@@ -75,7 +77,7 @@ export default function Home(props: Props) {
           </Box>
         )}
         <SignUpButton registerUrl={props.registerUrl} start={start} />
-        <SpeakersList speakers={props.speakers} />
+        <SpeakersList mainSpeakers={props.mainSpeakers} />
         <OrganizationsLogoBand organizations={props.organizations} />
         <ProgramList program={props.program} />
         <SignUpButton registerUrl={props.registerUrl} start={start} />
