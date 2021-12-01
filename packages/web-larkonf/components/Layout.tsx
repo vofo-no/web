@@ -74,6 +74,20 @@ function Layout(props: LayoutProps & HeroProps): JSX.Element {
               Personvernerklæring
             </a>
           </Text>
+          <Text textAlign="center" mx="auto" mt={4}>
+            <a
+              href="https://www.sanity.io"
+              target="_blank"
+              style={{ position: "relative" }}
+            >
+              <img
+                src="/sanity-logo.svg"
+                alt="SANITY"
+                title="Strukturert innhold er drevet av Sanity.io"
+                width={100}
+              />
+            </a>
+          </Text>
         </Box>
       </Box>
     </>
