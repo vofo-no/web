@@ -121,7 +121,7 @@ export interface Event extends SanityDocument {
    *
    *
    */
-  speakers?: Array<SanityKeyed<Person>>;
+  mainSpeakers?: Array<SanityKeyed<EventSpeaker>>;
 
   /**
    * Programposter — `array`
@@ -150,6 +150,13 @@ export interface Event extends SanityDocument {
    *
    */
   organizations?: Array<SanityKeyedReference<Organization>>;
+
+  /**
+   * Hovedtalere (ikke i bruk) — `array`
+   *
+   *
+   */
+  speakers?: Array<SanityKeyed<Person>>;
 }
 
 /**
@@ -225,6 +232,43 @@ export interface Organization extends SanityDocument {
 }
 
 /**
+ * Person
+ *
+ *
+ */
+export interface PersonDoc extends SanityDocument {
+  _type: "personDoc";
+
+  /**
+   * Navn — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Tittel og organisasjon — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Hovedbilde — `mainImage`
+   *
+   * Bilde som kan vises ved presentasjon av personen.
+   */
+  image?: MainImage;
+
+  /**
+   * Kort biografi — `text`
+   *
+   *
+   */
+  bio?: string;
+}
+
+/**
  * Konfigurasjon
  *
  *
@@ -283,6 +327,30 @@ export type Address = {
    *
    */
   addressCountry: string;
+};
+
+export type EventSpeaker = {
+  _type: "eventSpeaker";
+  /**
+   * Person — `reference`
+   *
+   *
+   */
+  person: SanityReference<PersonDoc>;
+
+  /**
+   * Rolle for arrangementet — `string`
+   *
+   *
+   */
+  role?: string;
+
+  /**
+   * Kort beskrivelse — `text`
+   *
+   *
+   */
+  bio?: string;
 };
 
 export type MainImage = {
@@ -383,6 +451,19 @@ export type ProgramItem = {
    *
    */
   level: "default" | "sub";
+
+  /**
+   * Talere — `array`
+   *
+   *
+   */
+  speakers?: Array<SanityKeyed<EventSpeaker>>;
 };
 
-export type Documents = Campaign | Event | Venue | Organization | SiteConfig;
+export type Documents =
+  | Campaign
+  | Event
+  | Venue
+  | Organization
+  | PersonDoc
+  | SiteConfig;

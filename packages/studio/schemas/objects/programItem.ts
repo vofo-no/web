@@ -42,6 +42,12 @@ export default {
       codegen: { required: true },
       validation: (Rule: Rule) => Rule.required(),
     },
+    {
+      name: "speakers",
+      type: "array",
+      of: [{ type: "eventSpeaker" }],
+      title: "Talere",
+    },
   ],
   preview: {
     select: {

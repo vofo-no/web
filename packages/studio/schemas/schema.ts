@@ -6,11 +6,13 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import campaign from "./documents/campaign";
 import event from "./documents/event";
 import venue from "./documents/venue";
+import person from "./documents/person";
 import badge from "./objects/badge";
 import address from "./objects/address";
+import eventSpeaker from "./objects/eventSpeaker";
 import mainImage from "./objects/mainImage";
 import schedule from "./objects/schedule";
-import person from "./objects/person";
+import personObj from "./objects/person";
 import programItem from "./objects/programItem";
 import siteConfig from "./documents/siteConfig";
 import organization from "./documents/organization";
@@ -27,11 +29,13 @@ export default createSchema({
     event,
     badge,
     address,
+    eventSpeaker,
     mainImage,
     schedule,
     venue,
     organization,
     person,
+    personObj,
     programItem,
     siteConfig,
   ]),

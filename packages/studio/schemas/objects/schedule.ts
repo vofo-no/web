@@ -23,4 +23,7 @@ export default {
       title: "Slutt",
     },
   ],
+  options: {
+    columns: 2,
+  },
 };

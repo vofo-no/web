@@ -41,9 +41,9 @@ export default {
       of: [{ type: "block" }],
     },
     {
-      name: "speakers",
+      name: "mainSpeakers",
       type: "array",
-      of: [{ type: "person" }],
+      of: [{ type: "eventSpeaker" }],
       title: "Hovedtalere",
     },
     {
@@ -74,6 +74,13 @@ export default {
           to: [{ type: "organization" }],
         },
       ],
+    },
+    {
+      name: "speakers",
+      type: "array",
+      of: [{ type: "person" }],
+      title: "Hovedtalere (ikke i bruk)",
+      hidden: true,
     },
   ],
   preview: {
