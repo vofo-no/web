@@ -12,7 +12,7 @@ interface OrganizationsLogoBandProps {
 function OrganizationsLogoBand({
   organizations,
 }: OrganizationsLogoBandProps): JSX.Element {
-  if (!organizations && organizations.length === 0) {
+  if (!organizations || organizations.length === 0) {
     return null;
   }
 
