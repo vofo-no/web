@@ -45,7 +45,7 @@ function OrganizationsLogoBand({
                     .height(120)
                     .url()}
                   alt={item.name}
-                  style={{ height: "100%" }}
+                  style={{ height: "100%", width: "100%" }}
                 />
               </a>
             </Box>
