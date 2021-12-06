@@ -10,16 +10,21 @@ import {
 } from "@vofo-no/design";
 import Hero, { HeroProps } from "./Hero";
 import FooterSponsor from "./FooterSponsor";
+import { LarKonfQueryResult } from "../queries/larkonfQuery";
 
 interface LayoutProps {
-  speakers?: Array<any>;
-  program?: Array<any>;
-  registerUrl?: string;
   children: React.ReactNode;
   start: Date;
 }
 
-function Layout(props: LayoutProps & HeroProps): JSX.Element {
+function Layout(
+  props: Pick<
+    LarKonfQueryResult["larkonfEvent"],
+    "mainSpeakers" | "program" | "registerUrl"
+  > &
+    LayoutProps &
+    HeroProps
+): JSX.Element {
   return (
     <>
       <BaseStyles />
@@ -36,7 +41,7 @@ function Layout(props: LayoutProps & HeroProps): JSX.Element {
           <MenuContainer>
             <Menu>
               <Box flexDirection="row">
-                {props.speakers && <a href="#deltakere">Du møter disse</a>}
+                {props.mainSpeakers && <a href="#deltakere">Du møter disse</a>}
                 {props.program && <a href="#program">Program</a>}
                 {props.registerUrl && isFuture(props.start) && (
                   <a href={props.registerUrl} target="_blank">
