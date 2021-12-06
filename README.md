@@ -13,5 +13,5 @@ Structured content powered by [Sanity.io](https://www.sanity.io/).
 
 [![Powered by Vercel][vercel]][vercel-url]
 
-[vercel]: ./public/powered-by-vercel.svg
+[vercel]: packages/web-larkonf/public/powered-by-vercel.svg
 [vercel-url]: https://vercel.com/?utm_source=vofo-kursinfo&utm_campaign=oss
