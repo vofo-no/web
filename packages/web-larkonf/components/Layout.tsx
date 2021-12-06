@@ -9,6 +9,7 @@ import {
   Text,
 } from "@vofo-no/design";
 import Hero, { HeroProps } from "./Hero";
+import FooterSponsor from "./FooterSponsor";
 
 interface LayoutProps {
   speakers?: Array<any>;
@@ -65,29 +66,16 @@ function Layout(props: LayoutProps & HeroProps): JSX.Element {
         <Box container>
           <Text textAlign="center">
             Konferansen arrangeres av{" "}
-            <a href="http://vofo.no">
+            <a href="https://www.vofo.no">
               <strong>Voksenopplæringsforbundet</strong>
             </a>
           </Text>
           <Text textAlign="center">
-            <a href="http://vofo.no/om-vofo/personvernerklaering/">
+            <a href="https://www.vofo.no/om-vofo/personvernerklaering/">
               Personvernerklæring
             </a>
           </Text>
-          <Text textAlign="center" mx="auto" mt={4}>
-            <a
-              href="https://www.sanity.io"
-              target="_blank"
-              style={{ position: "relative" }}
-            >
-              <img
-                src="/sanity-logo.svg"
-                alt="SANITY"
-                title="Strukturert innhold er drevet av Sanity.io"
-                width={100}
-              />
-            </a>
-          </Text>
+          <FooterSponsor />
         </Box>
       </Box>
     </>
