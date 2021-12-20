@@ -31,7 +31,7 @@ function SignUpButton({ registerUrl, start }: SignUpButtonProps): JSX.Element {
                 color="white"
                 fontSize={3}
               >
-                Registrer deg nå
+                Meld deg på
               </Text>
             </a>
           </Link>
