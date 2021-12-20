@@ -53,7 +53,7 @@ function Layout(
                       backgroundColor="primary"
                       color="white"
                     >
-                      Registrer deg nå
+                      Meld deg på
                     </Text>
                   </a>
                 )}
