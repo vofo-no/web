@@ -1,9 +1,7 @@
-import { Box, Text } from "@vofo-no/design";
 import imageUrlBuilder from "@sanity/image-url";
+import { Avatar, Flex, Text } from "design";
 import client from "../client";
 import { EventSpeakerWithPerson } from "../queries/larkonfQuery";
-
-import styles from "./SpeakerChip.module.css";
 
 const builder = imageUrlBuilder(client);
 
@@ -12,25 +10,27 @@ function SpeakerChip({
   role,
 }: Pick<EventSpeakerWithPerson, "person" | "role">): JSX.Element {
   return (
-    <Box gridTemplateColumns={"50px auto"} display="grid" my={1}>
-      <Box mx={["auto", 0]}>
-        {image?.asset && (
-          <img
-            src={builder.image(image).auto("format").width(40).height(40).url()}
-            className={[styles.image, styles.circle].join(" ")}
+    <Flex itemsCenter>
+      <div className="not-prose" style={{ flexShrink: 0 }}>
+        {image?.asset ? (
+          <Avatar
+            src={builder.image(image).auto("format").width(88).height(88).url()}
             alt={image.alt}
+            size="lg"
           />
+        ) : (
+          <div />
         )}
-      </Box>
+      </div>
       <div>
-        <Text as="h4" fontSize={[1, 2]} lineHeight={1.4} my={0}>
+        <Text as="h4" size="base" style={{ margin: 0, whiteSpace: "nowrap" }}>
           {name}
         </Text>
-        <Text mt={0} fontSize={1} lineHeight={1.4} my={0} color="#666">
+        <Text className="text-gray-200" as="div" size="sm">
           {role}
         </Text>
       </div>
-    </Box>
+    </Flex>
   );
 }
 

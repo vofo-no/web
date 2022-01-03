@@ -1,10 +1,9 @@
-import { Box, Text } from "@vofo-no/design";
 import Subheader from "./Subheader";
 import imageUrlBuilder from "@sanity/image-url";
 import client from "../client";
 
-import styles from "./SpeakersList.module.css";
 import { LarKonfQueryResult } from "../queries/larkonfQuery";
+import { Avatar, Box, Flex, Grid, Text } from "design";
 
 const builder = imageUrlBuilder(client);
 
@@ -18,57 +17,34 @@ function SpeakersList({
   return (
     <div id="deltakere">
       <Subheader>Du møter disse</Subheader>
-      <Box
-        display="grid"
-        gridTemplateColumns={["100%", "100%", "100%", "50% 50%"]}
-        gridGap={3}
-      >
+      <Grid isContainer cols={1} colsDesktop={2}>
         {mainSpeakers.map(({ person, role, bio }) => (
-          <Box
-            gridTemplateColumns={["auto", "200px auto"]}
-            display="grid"
-            variant="light"
-            boxShadow="small"
-            alignItems="start"
-            key={person._id}
-            px={5}
-            py={4}
-            my={0}
-          >
-            <Box mx={["auto", 0]}>
+          <Box key={person._id}>
+            <Flex cols colsTablet={false} itemsCenter>
               {person.image?.asset && (
-                <img
+                <Avatar
                   src={builder
                     .image(person.image)
                     .auto("format")
                     .width(175)
                     .height(175)
                     .url()}
-                  className={[styles.image, styles.circle].join(" ")}
                   alt={person.image.alt}
+                  size="xl"
+                  padding={3}
                 />
               )}
-            </Box>
-            <div>
-              <Text
-                as="h3"
-                fontSize={3}
-                lineHeight={1.2}
-                mb={1}
-                textAlign={["center", "left"]}
-              >
-                {person.name}
-              </Text>
-              <Text mt={0} lineHeight={1.4} textAlign={["center", "left"]}>
-                {role}
-              </Text>
-              <Text fontSize={2} lineHeight={1.4}>
-                {bio}
-              </Text>
-            </div>
+              <div>
+                <Text as="h3" style={{ margin: "1em 0 0" }} size="xl">
+                  {person.name}
+                </Text>
+                <Text size="base">{role}</Text>
+                <Text size="base">{bio}</Text>
+              </div>
+            </Flex>
           </Box>
         ))}
-      </Box>
+      </Grid>
     </div>
   );
 }

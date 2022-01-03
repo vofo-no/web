@@ -1,3 +1,4 @@
+import { global } from "design";
 import Document, {
   DocumentContext,
   Html,
@@ -17,6 +18,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <link href={global.fontUrl} rel="stylesheet" />
           <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-82KH03X2WJ"

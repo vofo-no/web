@@ -1,4 +1,4 @@
-import { Box } from "@vofo-no/design";
+import { Box } from "design";
 import { LarKonfQueryResult } from "../queries/larkonfQuery";
 import ProgramListEntry from "./ProgramListEntry";
 import Subheader from "./Subheader";
@@ -13,7 +13,7 @@ function ProgramList({
   return (
     <div id="program">
       <Subheader>Program</Subheader>
-      <Box variant="light" boxShadow="small" py={[1, 2]}>
+      <Box isContainer>
         {program.map((item) => (
           <ProgramListEntry
             key={[item.start, item.title].join("@")}

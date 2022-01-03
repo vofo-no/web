@@ -1,12 +1,9 @@
-import { Text } from "@vofo-no/design";
+import { Text } from "design";
+import { PropsWithChildren } from "react";
 
-interface SubheaderProps {
-  children: string;
-}
-
-function Subheader({ children }: SubheaderProps): JSX.Element {
+function Subheader({ children }: PropsWithChildren<{}>): JSX.Element {
   return (
-    <Text as="h2" fontSize={[3, 4]} mt={[6, 8]} textAlign="center">
+    <Text as="h2" size="3xl" style={{ textAlign: "center" }}>
       {children}
     </Text>
   );

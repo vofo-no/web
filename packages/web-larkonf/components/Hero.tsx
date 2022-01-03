@@ -1,11 +1,11 @@
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import { Box, Text } from "@vofo-no/design";
+import { Hero, Text } from "design";
 import imageUrlBuilder from "@sanity/image-url";
 import client from "../client";
-import { CSSProperties } from "react";
 import { format, isSameDay, isSameMonth } from "date-fns";
 import nb from "date-fns/locale/nb";
-import CampaignBadge from "./CampaignBadge";
+import SignUpButton from "./SignUpButton";
+//import CampaignBadge from "./CampaignBadge";
 
 const builder = imageUrlBuilder(client);
 
@@ -18,6 +18,7 @@ export interface HeroProps {
   };
   start: Date;
   end: Date;
+  registerUrl?: string;
   venue?: {
     name?: string;
   };
@@ -55,7 +56,7 @@ function TextOnImg({ children }: { children: string }): JSX.Element {
   return (
     <span
       style={{
-        display: "inline",
+        display: "inline-block",
         padding: "0.5rem 0.7rem",
         boxDecorationBreak: "clone",
         backgroundColor: "rgba(0, 0, 0, 0.5)",
@@ -66,60 +67,59 @@ function TextOnImg({ children }: { children: string }): JSX.Element {
   );
 }
 
-function Hero({
+function MyHero({
   title,
   description,
   image,
   start,
   end,
   venue,
+  registerUrl,
   campaign,
 }: HeroProps): JSX.Element {
-  const bgStyle: CSSProperties = {
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundImage: image
-      ? `url("${builder
-          .image(image)
-          .auto("format")
-          .width(1400)
-          .height(600)
-          .url()}")`
-      : undefined,
-    marginBottom: "-50px",
-  };
-
   return (
-    <>
-      <Box variant="dark" style={bgStyle}>
-        <Box
-          container
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          py={5}
-          minHeight={["300px", "300px", "500px", "750px"]}
-          paddingBottom="50px"
+    <Hero
+      smallImageUrl={
+        image &&
+        builder.image(image).auto("format").width(640).height(480).url()
+      }
+      mediumImageUrl={
+        image &&
+        builder.image(image).auto("format").width(1024).height(576).url()
+      }
+      largeImageUrl={
+        image &&
+        builder.image(image).auto("format").width(1920).height(1080).url()
+      }
+      alt={image?.alt}
+      isStack
+    >
+      <div style={{ textAlign: "center" }}>
+        <Text as="h1" style={{ margin: "2em 0 0" }} size="4xl">
+          <TextOnImg>{title}</TextOnImg>
+        </Text>
+        <Text as="p" style={{ margin: 0 }} className="text-white" size="2xl">
+          <TextOnImg>{description}</TextOnImg>
+        </Text>
+
+        <Text
+          as="p"
+          style={{ margin: "1.5rem 0 0" }}
+          className="text-white"
+          size="2xl"
         >
-          <Text as="h1" fontSize={[4, 5, 6]} mt={4} mb={0}>
-            <TextOnImg>{title}</TextOnImg>
-          </Text>
-          <Text my={[2, 1, 0]} fontSize={[2, 3, 4]}>
-            <TextOnImg>{description}</TextOnImg>
-          </Text>
-          <Text fontSize={[2, 3, 4]}>
-            <TextOnImg>
-              {[venue?.name, humanDateRange(start, end)]
-                .filter(Boolean)
-                .join(", ")}
-            </TextOnImg>
-          </Text>
-        </Box>
-        <CampaignBadge campaign={campaign} />
-      </Box>
-    </>
+          <TextOnImg>
+            {[venue?.name, humanDateRange(start, end)]
+              .filter(Boolean)
+              .join(", ")}
+          </TextOnImg>
+        </Text>
+      </div>
+      <div className="hidden tablet:block">
+        <SignUpButton start={start} registerUrl={registerUrl} invert />
+      </div>
+    </Hero>
   );
 }
 
-export default Hero;
+export default MyHero;

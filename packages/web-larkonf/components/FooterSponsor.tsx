@@ -1,8 +1,8 @@
-import { Box } from "@vofo-no/design";
+import { Flex } from "design";
 
 const FooterSponsor = (): JSX.Element => (
-  <Box display="flex" alignItems="center" justifyContent="center">
-    <Box m={3}>
+  <Flex itemsCenter justifyCenter gap="xl">
+    <div>
       <a
         href="https://www.sanity.io"
         target="_blank"
@@ -15,13 +15,13 @@ const FooterSponsor = (): JSX.Element => (
           width={100}
         />
       </a>
-    </Box>
-    <Box m={3}>
+    </div>
+    <div>
       <a href="https://vercel.com/?utm_source=vofo-kursinfo&utm_campaign=oss">
         <img src="/powered-by-vercel.svg" alt="Powered by Vercel" width={180} />
       </a>
-    </Box>
-  </Box>
+    </div>
+  </Flex>
 );
 
 export default FooterSponsor;

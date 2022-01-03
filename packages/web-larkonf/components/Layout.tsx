@@ -1,14 +1,14 @@
 import isFuture from "date-fns/isFuture";
-
 import {
-  BaseStyles,
-  Box,
+  TextStyles,
+  Header,
   Logo,
-  Menu,
-  MenuContainer,
-  Text,
-} from "@vofo-no/design";
-import Hero, { HeroProps } from "./Hero";
+  NavMenu,
+  NavItem,
+  Button,
+  Footer,
+} from "design";
+import MyHero, { HeroProps } from "./Hero";
 import FooterSponsor from "./FooterSponsor";
 import { LarKonfQueryResult } from "../queries/larkonfQuery";
 
@@ -27,62 +27,56 @@ function Layout(
 ): JSX.Element {
   return (
     <>
-      <BaseStyles />
-      <Box variant="light" boxShadow="small">
-        <Box
-          container
-          display="flex"
-          flexDirection="row"
-          alignItems="center"
-          justifyContent={["center", "center", "space-between"]}
-          mb={2}
-        >
-          <Logo variant="header" />
-          <MenuContainer>
-            <Menu>
-              <Box flexDirection="row">
-                {props.mainSpeakers && <a href="#deltakere">Du møter disse</a>}
-                {props.program && <a href="#program">Program</a>}
-                {props.registerUrl && isFuture(props.start) && (
-                  <a href={props.registerUrl} target="_blank">
-                    <Text
-                      as="span"
-                      py={3}
-                      px={4}
-                      style={{ borderRadius: "5px" }}
-                      backgroundColor="primary"
-                      color="white"
-                    >
-                      Registrer deg nå
-                    </Text>
-                  </a>
-                )}
-              </Box>
-            </Menu>
-          </MenuContainer>
-        </Box>
-        <Hero {...props} />
-      </Box>
-
-      <Box my={2} container>
+      <Header logo={<Logo variant="header" />}>
+        <NavMenu alignRight>
+          {props.mainSpeakers && (
+            <NavItem showDesktop href="#deltakere">
+              Du møter disse
+            </NavItem>
+          )}
+          {props.program && (
+            <NavItem showDesktop href="#program">
+              Program
+            </NavItem>
+          )}
+          <NavItem showDesktop>
+            <div></div>
+          </NavItem>
+          {props.registerUrl && isFuture(props.start) && (
+            <div>
+              <Button
+                as="a"
+                href={props.registerUrl}
+                target="_blank"
+                variant="primary"
+                size="large"
+              >
+                Meld deg på
+              </Button>
+            </div>
+          )}
+        </NavMenu>
+      </Header>
+      <TextStyles fullWidth>
+        <MyHero {...props} />
         {props.children}
-      </Box>
-      <Box variant="dark" mt={4} py={3} px={2}>
-        <Box container>
-          <Text textAlign="center">
+      </TextStyles>
+      <Footer>
+        <div>
+          <p style={{ textAlign: "center" }}>
             Konferansen arrangeres av{" "}
-            <a href="https://www.vofo.no">
-              <strong>Voksenopplæringsforbundet</strong>
-            </a>
-          </Text>
-          <Text textAlign="center">
+            <strong>
+              <a href="https://www.vofo.no">Voksenopplæringsforbundet</a>
+            </strong>
+          </p>
+          <p style={{ textAlign: "center" }}>
             <a href="https://www.vofo.no/om-vofo/personvernerklaering/">
               Personvernerklæring
             </a>
-          </Text>
+          </p>
           <FooterSponsor />
-        </Box>
-      </Box>
+        </div>
+      </Footer>
     </>
   );
 }

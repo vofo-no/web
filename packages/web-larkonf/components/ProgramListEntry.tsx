@@ -1,4 +1,4 @@
-import { Box, Text } from "@vofo-no/design";
+import { Flex, Grid, Text, TextStyles } from "design";
 import format from "date-fns/format";
 import parseISO from "date-fns/parseISO";
 import { LarKonfQueryResult } from "../queries/larkonfQuery";
@@ -14,36 +14,36 @@ function ProgramListEntry({ item }: ProgramListEntryProps): JSX.Element {
   const isSub = item.level === "sub";
 
   return (
-    <Box
-      gridTemplateColumns={isSub ? "auto" : ["70px auto", "90px auto"]}
-      display="grid"
-      px={[3, 5]}
-      mt={2}
-      mb={3}
-      ml={isSub ? ["70px", "90px"] : undefined}
-    >
-      {!isSub && (
-        <Text fontSize={[2, 3]}>{format(parseISO(item.start), "HH:mm")}</Text>
-      )}
-      <div>
+    <Flex>
+      <div style={{ flexBasis: "68px", flexGrow: 0, flexShrink: 0 }}>
+        {!isSub && (
+          <Text size="xl" style={{ margin: "1em 0" }}>
+            {format(parseISO(item.start), "HH:mm")}
+          </Text>
+        )}
+      </div>
+      <div style={{ paddingBottom: "1em" }}>
         <Text
           as={isSub ? "h4" : "h3"}
-          fontSize={isSub ? [1, 2] : [2, 3]}
-          mt={isSub ? 0 : undefined}
-          mb={0}
+          style={{ margin: "1em 0 0.25em" }}
+          size={isSub ? "lg" : "xl"}
         >
           {item.title}
         </Text>
         {item.description && (
-          <Text mt={0} mb={2}>
-            {item.description}
-          </Text>
+          <TextStyles>
+            <Text size="base" style={{ margin: "0.25em 0 0.5em" }}>
+              {item.description}
+            </Text>
+          </TextStyles>
         )}
-        {item.speakers?.map(({ person, role }) => (
-          <SpeakerChip person={person} role={role} key={person._id} />
-        ))}
+        <Grid colsTablet={2} colsDesktop={3}>
+          {item.speakers?.map(({ person, role }) => (
+            <SpeakerChip person={person} role={role} key={person._id} />
+          ))}
+        </Grid>
       </div>
-    </Box>
+    </Flex>
   );
 }
 

@@ -8,8 +8,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import BlockContent from "@sanity/block-content-to-react";
 import { NextSeo, EventJsonLd } from "next-seo";
 import { LarKonfQuery, LarKonfQueryResult } from "../queries/larkonfQuery";
-import { Box } from "@vofo-no/design";
-import OrganizationsLogoBand from "../components/OrganizationsLogoBand";
+import { Box, TextStyles } from "design";
 
 const builder = imageUrlBuilder(client);
 
@@ -72,13 +71,14 @@ export default function Home(props: Props) {
       )}
       <main>
         {props.info && (
-          <Box variant="light" boxShadow="small" px={[3, 4]} py={[1, 2]}>
-            <BlockContent blocks={props.info} />
-          </Box>
+          <TextStyles center>
+            <Box>
+              <BlockContent blocks={props.info} />
+            </Box>
+          </TextStyles>
         )}
         <SignUpButton registerUrl={props.registerUrl} start={start} />
         <SpeakersList mainSpeakers={props.mainSpeakers} />
-        <OrganizationsLogoBand organizations={props.organizations} />
         <ProgramList program={props.program} />
         <SignUpButton registerUrl={props.registerUrl} start={start} />
       </main>
