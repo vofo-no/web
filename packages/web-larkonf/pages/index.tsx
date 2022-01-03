@@ -78,8 +78,8 @@ export default function Home(props: Props) {
           </TextStyles>
         )}
         <SignUpButton registerUrl={props.registerUrl} start={start} />
-        <SpeakersList mainSpeakers={props.mainSpeakers} />
         <ProgramList program={props.program} />
+        <SpeakersList mainSpeakers={props.mainSpeakers} />
         <SignUpButton registerUrl={props.registerUrl} start={start} />
       </main>
     </Layout>

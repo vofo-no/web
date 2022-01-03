@@ -16,7 +16,7 @@ function SpeakersList({
 
   return (
     <div id="deltakere">
-      <Subheader>Du møter disse</Subheader>
+      <Subheader>Konferansen ledes av</Subheader>
       <Grid isContainer cols={1} colsDesktop={2}>
         {mainSpeakers.map(({ person, role, bio }) => (
           <Box key={person._id}>

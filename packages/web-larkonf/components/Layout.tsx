@@ -29,11 +29,6 @@ function Layout(
     <>
       <Header logo={<Logo variant="header" />}>
         <NavMenu alignRight>
-          {props.mainSpeakers && (
-            <NavItem showDesktop href="#deltakere">
-              Du møter disse
-            </NavItem>
-          )}
           {props.program && (
             <NavItem showDesktop href="#program">
               Program
