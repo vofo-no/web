@@ -43,6 +43,7 @@ function Layout(
                 as="a"
                 href={props.registerUrl}
                 target="_blank"
+                rel="noopener"
                 variant="primary"
                 size="large"
               >

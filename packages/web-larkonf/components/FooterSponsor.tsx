@@ -6,6 +6,7 @@ const FooterSponsor = (): JSX.Element => (
       <a
         href="https://www.sanity.io"
         target="_blank"
+        rel="noopener"
         style={{ position: "relative" }}
       >
         <img
@@ -17,7 +18,11 @@ const FooterSponsor = (): JSX.Element => (
       </a>
     </div>
     <div>
-      <a href="https://vercel.com/?utm_source=vofo-kursinfo&utm_campaign=oss">
+      <a
+        href="https://vercel.com/?utm_source=vofo-kursinfo&utm_campaign=oss"
+        target="_blank"
+        rel="noopener"
+      >
         <img src="/powered-by-vercel.svg" alt="Powered by Vercel" width={180} />
       </a>
     </div>

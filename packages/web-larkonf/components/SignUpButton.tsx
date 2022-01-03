@@ -22,6 +22,7 @@ function SignUpButton({
         as="a"
         href={registerUrl}
         target="_blank"
+        rel="noopener"
         variant={invert ? "secondary" : "primary"}
         size="xlarge"
       >
