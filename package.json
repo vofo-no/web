@@ -10,12 +10,12 @@
     "jest": "^27.2.1",
     "turbo": "^1.0.13"
   },
-  "dependencies": {},
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "dev": "lerna run dev --parallel",
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel --no-cache",
     "prepare": "husky install"
   },
   "config": {
@@ -47,5 +47,6 @@
         "cache": false
       }
     }
-  }
+  },
+  "packageManager": "yarn@3.1.1"
 }
