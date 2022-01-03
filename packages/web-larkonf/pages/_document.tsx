@@ -16,9 +16,15 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="nb">
         <Head>
-          <link href={global.fontUrl} rel="stylesheet" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="anonymous"
+          />
+          <link rel="preload" as="style" href={global.fontUrl} />
+          <link rel="stylesheet" href={global.fontUrl} />
           <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-82KH03X2WJ"
