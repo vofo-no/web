@@ -45,6 +45,11 @@
       },
       "dev": {
         "cache": false
+      },
+      "web-larkonf#build": {
+        "dependsOn": [
+          "design#build"
+        ]
       }
     }
   },
