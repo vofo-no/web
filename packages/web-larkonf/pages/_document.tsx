@@ -23,7 +23,6 @@ class MyDocument extends Document {
             href="https://fonts.gstatic.com"
             crossOrigin="anonymous"
           />
-          <link rel="preload" as="style" href={global.fontUrl} />
           <link rel="stylesheet" href={global.fontUrl} />
           <script
             async
