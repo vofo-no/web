@@ -26,7 +26,7 @@ export const Hero = ({
     <div
       className={classNames(
         "aspect-4/3 tablet:aspect-video mx-auto max-w-[1920px] w-full relative",
-        { "-mb-10": isStack }
+        { "tablet:-mb-10": isStack }
       )}
     >
       <picture className="not-prose">
@@ -41,7 +41,7 @@ export const Hero = ({
       <div
         className={classNames(
           "relative flex flex-col items-center justify-center h-full max-w-none prose prose-invert",
-          { "pb-10": isStack }
+          { "tablet:pb-10": isStack }
         )}
       >
         {children}

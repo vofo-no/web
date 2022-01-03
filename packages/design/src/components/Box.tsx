@@ -4,8 +4,8 @@ import classNames from "classnames";
 const paddings = {
   no: "p-0",
   sm: "p-1 tablet:p-1.5 desktop:p-2",
-  md: "px-3 py-1 tablet:px-5 tablet:py-3 desktop:px-6 desktop:py-4",
-  lg: "px-4 py-2 tablet:px-8 tablet:py-5 desktop:px-10 desktop:py-7",
+  md: "px-3 py-1 tablet:px-5 tablet:py-2 desktop:px-6 desktop:py-2",
+  lg: "px-4 py-2 tablet:px-8 tablet:py-3 desktop:px-10 desktop:py-3",
 } as const;
 
 export interface BoxProps {
