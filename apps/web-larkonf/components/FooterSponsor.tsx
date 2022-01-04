@@ -12,9 +12,11 @@ const FooterSponsor = (): JSX.Element => (
       >
         <Image
           src="/sanity-logo.svg"
+          unoptimized
           alt="SANITY"
           title="Strukturert innhold er drevet av Sanity.io"
           width={100}
+          height={20}
         />
       </a>
     </div>
@@ -26,8 +28,10 @@ const FooterSponsor = (): JSX.Element => (
       >
         <Image
           src="/powered-by-vercel.svg"
+          unoptimized
           alt="Powered by Vercel"
           width={180}
+          height={37}
         />
       </a>
     </div>
