@@ -1,4 +1,5 @@
 import { Flex } from "design";
+import Image from "next/image";
 
 const FooterSponsor = (): JSX.Element => (
   <Flex itemsCenter justifyCenter gap="xl">
@@ -6,10 +7,10 @@ const FooterSponsor = (): JSX.Element => (
       <a
         href="https://www.sanity.io"
         target="_blank"
-        rel="noopener"
+        rel="noreferrer"
         style={{ position: "relative" }}
       >
-        <img
+        <Image
           src="/sanity-logo.svg"
           alt="SANITY"
           title="Strukturert innhold er drevet av Sanity.io"
@@ -21,9 +22,13 @@ const FooterSponsor = (): JSX.Element => (
       <a
         href="https://vercel.com/?utm_source=vofo-kursinfo&utm_campaign=oss"
         target="_blank"
-        rel="noopener"
+        rel="noreferrer"
       >
-        <img src="/powered-by-vercel.svg" alt="Powered by Vercel" width={180} />
+        <Image
+          src="/powered-by-vercel.svg"
+          alt="Powered by Vercel"
+          width={180}
+        />
       </a>
     </div>
   </Flex>
