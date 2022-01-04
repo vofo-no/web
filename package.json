@@ -11,7 +11,8 @@
     "turbo": "^1.0.24"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "scripts": {
     "build": "turbo run build",

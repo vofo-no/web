@@ -7,7 +7,7 @@ import {
   ProgramItem,
   PersonDoc,
   EventSpeaker,
-} from "studio/schema";
+} from "shared/schema";
 
 export const LarKonfQuery = groq`
 *[_id == "global-config"][0] {
