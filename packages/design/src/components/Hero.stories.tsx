@@ -22,6 +22,16 @@ Default.args = {
   children: <h1>Hero!</h1>,
 };
 
+export const Blurred = Template.bind({});
+Blurred.args = {
+  smallImageUrl: "https://placekitten.com/640/480",
+  mediumImageUrl: "https://placekitten.com/1024/576",
+  largeImageUrl: "https://placekitten.com/1920/1080",
+  alt: "Haha",
+  children: <h1>Hero!</h1>,
+  isBlurred: true,
+};
+
 export const Stacked: ComponentStory<typeof Hero> = (args) => (
   <>
     <Hero {...args} />

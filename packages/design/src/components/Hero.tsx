@@ -12,6 +12,7 @@ export interface HeroProps {
   mediumImageUrl: string;
   /** 1920x1080px image url */
   largeImageUrl: string;
+  isBlurred?: boolean;
 }
 
 export const Hero = ({
@@ -19,13 +20,14 @@ export const Hero = ({
   mediumImageUrl,
   largeImageUrl,
   alt,
+  isBlurred,
   isStack,
   children,
 }: PropsWithChildren<HeroProps>) => (
   <div className="bg-gray-200 relative">
     <div
       className={classNames(
-        "aspect-4/3 tablet:aspect-video mx-auto max-w-[1920px] w-full relative",
+        "aspect-4/3 tablet:aspect-video mx-auto max-w-[1920px] w-full relative overflow-hidden",
         { "tablet:-mb-10": isStack }
       )}
     >
@@ -35,7 +37,9 @@ export const Hero = ({
         <img
           src={smallImageUrl}
           alt={alt}
-          className="absolute top-0 left-0 w-full h-full"
+          className={classNames("absolute top-0 left-0 w-full h-full", {
+            "blur-sm": isBlurred,
+          })}
         />
       </picture>
       <div
