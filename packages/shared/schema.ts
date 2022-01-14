@@ -138,6 +138,13 @@ export interface Event extends SanityDocument {
   registerUrl?: string;
 
   /**
+   * YouTube video-ID — `string`
+   *
+   * ID til opptak eller direktesending på YouTube
+   */
+  youTubeVideoId?: string;
+
+  /**
    * Kampanje — `reference`
    *
    * Knytt arrangementet til en kampanje

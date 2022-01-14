@@ -58,6 +58,12 @@ export default {
       title: "Lenke til påmelding",
     },
     {
+      name: "youTubeVideoId",
+      type: "string",
+      title: "YouTube video-ID",
+      description: "ID til opptak eller direktesending på YouTube",
+    },
+    {
       name: "campaign",
       type: "reference",
       to: { type: "campaign" },
