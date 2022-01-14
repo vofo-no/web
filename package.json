@@ -16,7 +16,8 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev --parallel --no-cache",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
     "prepare": "husky install"
   },
   "config": {
@@ -46,11 +47,6 @@
       },
       "dev": {
         "cache": false
-      },
-      "web-larkonf#build": {
-        "dependsOn": [
-          "design#build"
-        ]
       }
     }
   },
