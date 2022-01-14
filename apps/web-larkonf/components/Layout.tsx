@@ -8,23 +8,28 @@ import {
   Button,
   Footer,
 } from "design";
-import MyHero, { HeroProps } from "./Hero";
+import MyHero from "./Hero";
 import FooterSponsor from "./FooterSponsor";
 import { LarKonfQueryResult } from "../queries/larkonfQuery";
+import { PropsWithChildren } from "react";
 
-interface LayoutProps {
-  children: React.ReactNode;
+export interface LayoutProps
+  extends Pick<
+    LarKonfQueryResult["larkonfEvent"],
+    | "mainSpeakers"
+    | "program"
+    | "registerUrl"
+    | "title"
+    | "venue"
+    | "description"
+    | "image"
+    | "youTubeVideoId"
+  > {
   start: Date;
+  end: Date;
 }
 
-function Layout(
-  props: Pick<
-    LarKonfQueryResult["larkonfEvent"],
-    "mainSpeakers" | "program" | "registerUrl"
-  > &
-    LayoutProps &
-    HeroProps
-): JSX.Element {
+function Layout(props: PropsWithChildren<LayoutProps>): JSX.Element {
   return (
     <>
       <Header logo={<Logo variant="header" />}>

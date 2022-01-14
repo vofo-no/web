@@ -2,35 +2,28 @@ import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { Hero, Text } from "design";
 import imageUrlBuilder from "@sanity/image-url";
 import client from "../client";
-import { format, isSameDay, isSameMonth } from "date-fns";
+import { format, isPast, isSameDay, isSameMonth, isToday } from "date-fns";
 import nb from "date-fns/locale/nb";
 import SignUpButton from "./SignUpButton";
-//import CampaignBadge from "./CampaignBadge";
+import { YouTubeVideo } from "./YouTubeVideo";
+import { LayoutProps } from "./Layout";
 
 const builder = imageUrlBuilder(client);
 
-export interface HeroProps {
-  title: string;
-  description?: string;
-  image?: {
-    asset: SanityImageSource;
-    alt: string;
-  };
-  start: Date;
-  end: Date;
-  registerUrl?: string;
-  venue?: {
-    name?: string;
-  };
-  campaign?: {
-    title: string;
-    link?: string;
-    badge?: {
-      asset: SanityImageSource;
-      alt: string;
-    };
-  };
-}
+interface HeroProps2
+  extends Pick<
+    LayoutProps,
+    | "title"
+    | "description"
+    | "image"
+    | "start"
+    | "end"
+    | "mainSpeakers"
+    | "venue"
+    | "program"
+    | "registerUrl"
+    | "youTubeVideoId"
+  > {}
 
 function humanDateRange(start: Date, end: Date): string {
   if (isSameDay(start, end)) {
@@ -75,8 +68,10 @@ function MyHero({
   end,
   venue,
   registerUrl,
-  campaign,
-}: HeroProps): JSX.Element {
+  youTubeVideoId,
+}: HeroProps2): JSX.Element {
+  const showVideo = youTubeVideoId && (isToday(start) || isPast(start));
+
   return (
     <Hero
       smallImageUrl={
@@ -93,31 +88,36 @@ function MyHero({
       }
       alt={image?.alt}
       isStack
+      isBlurred={showVideo}
     >
-      <div style={{ textAlign: "center" }}>
-        <Text as="h1" style={{ margin: "2em 0 0" }} size="4xl">
-          <TextOnImg>{title}</TextOnImg>
-        </Text>
-        <Text as="p" style={{ margin: 0 }} className="text-white" size="2xl">
-          <TextOnImg>{description}</TextOnImg>
-        </Text>
+      {showVideo ? (
+        <YouTubeVideo videoId={youTubeVideoId} />
+      ) : (
+        <div style={{ textAlign: "center" }}>
+          <Text as="h1" style={{ margin: "2em 0 0" }} size="4xl">
+            <TextOnImg>{title}</TextOnImg>
+          </Text>
+          <Text as="p" style={{ margin: 0 }} className="text-white" size="2xl">
+            <TextOnImg>{description}</TextOnImg>
+          </Text>
 
-        <Text
-          as="p"
-          style={{ margin: "1.5rem 0 0" }}
-          className="text-white"
-          size="2xl"
-        >
-          <TextOnImg>
-            {[venue?.name, humanDateRange(start, end)]
-              .filter(Boolean)
-              .join(", ")}
-          </TextOnImg>
-        </Text>
-      </div>
-      <div className="hidden tablet:block">
-        <SignUpButton start={start} registerUrl={registerUrl} invert />
-      </div>
+          <Text
+            as="p"
+            style={{ margin: "1.5rem 0 0" }}
+            className="text-white"
+            size="2xl"
+          >
+            <TextOnImg>
+              {[venue?.name, humanDateRange(start, end)]
+                .filter(Boolean)
+                .join(", ")}
+            </TextOnImg>
+          </Text>
+          <div className="hidden tablet:block">
+            <SignUpButton start={start} registerUrl={registerUrl} invert />
+          </div>
+        </div>
+      )}
     </Hero>
   );
 }

@@ -20,6 +20,7 @@ export const LarKonfQuery = groq`
         image,
         info,
         registerUrl,
+        youTubeVideoId,
         venue->,
         campaign->,
         organizations[]->
@@ -37,7 +38,13 @@ export interface ProgramItemWithSpeakers extends Omit<ProgramItem, "speakers"> {
 export interface LarKonfQueryResult {
   larkonfEvent?: Pick<
     Event,
-    "title" | "description" | "schedule" | "image" | "info" | "registerUrl"
+    | "title"
+    | "description"
+    | "schedule"
+    | "image"
+    | "info"
+    | "registerUrl"
+    | "youTubeVideoId"
   > & {
     program?: Array<ProgramItemWithSpeakers>;
     mainSpeakers?: Array<EventSpeakerWithPerson>;
