@@ -1,4 +1,3 @@
-import isFuture from "date-fns/isFuture";
 import {
   TextStyles,
   Header,
@@ -10,21 +9,10 @@ import {
 } from "design";
 import MyHero from "./Hero";
 import FooterSponsor from "./FooterSponsor";
-import { LarKonfQueryResult } from "../queries/larkonfQuery";
 import { PropsWithChildren } from "react";
+import { IndexPageProps } from "../pages";
 
-export interface LayoutProps
-  extends Pick<
-    LarKonfQueryResult["larkonfEvent"],
-    | "mainSpeakers"
-    | "program"
-    | "registerUrl"
-    | "title"
-    | "venue"
-    | "description"
-    | "image"
-    | "youTubeVideoId"
-  > {
+export interface LayoutProps extends IndexPageProps {
   start: Date;
   end: Date;
 }
@@ -42,7 +30,7 @@ function Layout(props: PropsWithChildren<LayoutProps>): JSX.Element {
           <NavItem showDesktop>
             <div></div>
           </NavItem>
-          {props.registerUrl && isFuture(props.start) && (
+          {props.showSignUp && (
             <div>
               <Button
                 as="a"

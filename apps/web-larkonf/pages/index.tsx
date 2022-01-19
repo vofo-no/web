@@ -1,26 +1,41 @@
+import BlockContent from "@sanity/block-content-to-react";
+import imageUrlBuilder from "@sanity/image-url";
+import isFuture from "date-fns/isFuture";
+import isToday from "date-fns/isToday";
+import parseISO from "date-fns/parseISO";
+import { Box, TextStyles } from "design";
+import { NextSeo, EventJsonLd } from "next-seo";
+
 import Layout from "../components/Layout";
 import client from "../client";
-import parseISO from "date-fns/parseISO";
 import ProgramList from "../components/ProgramList";
 import SpeakersList from "../components/SpeakersList";
 import SignUpButton from "../components/SignUpButton";
-import imageUrlBuilder from "@sanity/image-url";
-import BlockContent from "@sanity/block-content-to-react";
-import { NextSeo, EventJsonLd } from "next-seo";
 import { LarKonfQuery, LarKonfQueryResult } from "../queries/larkonfQuery";
-import { Box, TextStyles } from "design";
 
 const builder = imageUrlBuilder(client);
 
 export async function getStaticProps() {
   const { larkonfEvent } = await client.fetch<LarKonfQueryResult>(LarKonfQuery);
-  return { props: larkonfEvent, revalidate: 60 };
+  const start =
+    larkonfEvent.schedule.from && parseISO(larkonfEvent.schedule.from);
+
+  const extra = {
+    showSignUp: larkonfEvent.registerUrl && start && isFuture(start),
+    showVideoPlayer:
+      larkonfEvent.youTubeVideoId &&
+      start &&
+      (isToday(start) || !isFuture(start)),
+  };
+  return { props: { ...larkonfEvent, ...extra }, revalidate: 60 };
 }
 
 type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;
-type Props = UnwrapPromise<ReturnType<typeof getStaticProps>>["props"];
+export type IndexPageProps = UnwrapPromise<
+  ReturnType<typeof getStaticProps>
+>["props"];
 
-export default function Home(props: Props) {
+export default function Home(props: IndexPageProps) {
   const openGraphImages = props.image
     ? [
         {
@@ -76,10 +91,16 @@ export default function Home(props: Props) {
             </Box>
           </TextStyles>
         )}
-        <SignUpButton registerUrl={props.registerUrl} start={start} />
+        <SignUpButton
+          registerUrl={props.registerUrl}
+          showSignUp={props.showSignUp}
+        />
         <ProgramList program={props.program} />
         <SpeakersList mainSpeakers={props.mainSpeakers} />
-        <SignUpButton registerUrl={props.registerUrl} start={start} />
+        <SignUpButton
+          registerUrl={props.registerUrl}
+          showSignUp={props.showSignUp}
+        />
       </main>
     </Layout>
   );
