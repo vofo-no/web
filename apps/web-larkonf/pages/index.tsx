@@ -13,9 +13,8 @@ import { Box, TextStyles } from "design";
 const builder = imageUrlBuilder(client);
 
 export async function getStaticProps() {
-  const props = await client.fetch<LarKonfQueryResult>(LarKonfQuery);
-  props;
-  return { props: props["larkonfEvent"] };
+  const { larkonfEvent } = await client.fetch<LarKonfQueryResult>(LarKonfQuery);
+  return { props: larkonfEvent, revalidate: 60 };
 }
 
 type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;
