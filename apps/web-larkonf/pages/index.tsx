@@ -17,6 +17,10 @@ const builder = imageUrlBuilder(client);
 
 export async function getStaticProps() {
   const { larkonfEvent } = await client.fetch<LarKonfQueryResult>(LarKonfQuery);
+  // MOCK - NOT FOR PRODUCTION
+  larkonfEvent.youTubeVideoId = "AtfcDkSrRCU";
+  larkonfEvent.schedule.from = "2020-01-20T14:00:00.000Z";
+
   const start =
     larkonfEvent.schedule.from && parseISO(larkonfEvent.schedule.from);
 
