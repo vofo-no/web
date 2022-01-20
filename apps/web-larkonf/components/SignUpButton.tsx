@@ -1,18 +1,17 @@
-import isFuture from "date-fns/isFuture";
 import { Button } from "design";
 
 interface SignUpButtonProps {
   registerUrl?: string;
-  start: Date;
+  showSignUp: boolean;
   invert?: boolean;
 }
 
 function SignUpButton({
   registerUrl,
-  start,
+  showSignUp,
   invert,
 }: SignUpButtonProps): JSX.Element {
-  if (!registerUrl || !isFuture(start)) return null;
+  if (!showSignUp) return null;
 
   return (
     <div

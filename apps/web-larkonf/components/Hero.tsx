@@ -1,8 +1,7 @@
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { Hero, Text } from "design";
 import imageUrlBuilder from "@sanity/image-url";
 import client from "../client";
-import { format, isPast, isSameDay, isSameMonth, isToday } from "date-fns";
+import { format, isSameDay, isSameMonth } from "date-fns";
 import nb from "date-fns/locale/nb";
 import SignUpButton from "./SignUpButton";
 import { YouTubeVideo } from "./YouTubeVideo";
@@ -23,6 +22,8 @@ interface HeroProps2
     | "program"
     | "registerUrl"
     | "youTubeVideoId"
+    | "showSignUp"
+    | "showVideoPlayer"
   > {}
 
 function humanDateRange(start: Date, end: Date): string {
@@ -69,9 +70,9 @@ function MyHero({
   venue,
   registerUrl,
   youTubeVideoId,
+  showSignUp,
+  showVideoPlayer,
 }: HeroProps2): JSX.Element {
-  const showVideo = youTubeVideoId && (isToday(start) || isPast(start));
-
   return (
     <Hero
       smallImageUrl={
@@ -88,9 +89,9 @@ function MyHero({
       }
       alt={image?.alt}
       isStack
-      isBlurred={showVideo}
+      isBlurred={showVideoPlayer}
     >
-      {showVideo ? (
+      {showVideoPlayer ? (
         <YouTubeVideo videoId={youTubeVideoId} />
       ) : (
         <div style={{ textAlign: "center" }}>
@@ -114,7 +115,11 @@ function MyHero({
             </TextOnImg>
           </Text>
           <div className="hidden tablet:block">
-            <SignUpButton start={start} registerUrl={registerUrl} invert />
+            <SignUpButton
+              showSignUp={showSignUp}
+              registerUrl={registerUrl}
+              invert
+            />
           </div>
         </div>
       )}
