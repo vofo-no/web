@@ -14,7 +14,7 @@ export const LarKonfQuery = groq`
     larkonfEvent->{
         title,
         description,
-        'schedule': {'from': '2022-01-20T08:00:00.000Z', 'to': '2022-01-20T11:00:00.000Z'},
+        schedule,
         program[]{ ..., speakers[]{ ..., person-> }},
         mainSpeakers[]{ ..., person-> },
         image,
