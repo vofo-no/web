@@ -44,7 +44,7 @@ export const Button = <T extends ElementType = "button">({
   return (
     <Component
       className={classNames(
-        "group leading-none font-semibold border-2 rounded cursor-pointer inline-block overflow-hidden relative text-center no-underline ease-out duration-200 will-change-transform align-top whitespace-nowrap select-none opacity-100 m-0",
+        "group leading-none font-semibold border-2 rounded cursor-pointer inline-block overflow-hidden relative text-center no-underline ease-out duration-200 align-top whitespace-nowrap select-none opacity-100 m-0",
         {
           "active:shadow-inset-button": !isLoading && !isDisabled,
           "cursor-progress opacity-70": isLoading,
