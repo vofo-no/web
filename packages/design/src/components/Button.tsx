@@ -36,7 +36,6 @@ export const Button = <T extends ElementType = "button">({
   size,
   isDisabled,
   isOpen,
-  className,
   ...rest
 }: ButtonProps<T> & ComponentPropsWithoutRef<T>) => {
   const Component = as || "button";

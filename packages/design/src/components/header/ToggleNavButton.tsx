@@ -1,9 +1,9 @@
-import React from "react";
+import React, { MouseEvent } from "react";
 import { Button } from "../Button";
 
 export interface ToggleNavButtonProps {
   isOpen?: boolean;
-  onClick?: (event: any) => void;
+  onClick?: (event: MouseEvent) => void;
 }
 
 export const ToggleNavButton = ({ isOpen, ...props }: ToggleNavButtonProps) => {

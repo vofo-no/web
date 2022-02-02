@@ -17,7 +17,7 @@ export const WithLink = Template.bind({});
 WithLink.args = {
   children: (
     <div>
-      Footer text <a href="#">Link o'hoy!</a>
+      Footer text <a href="#">Link o&apos;hoy!</a>
     </div>
   ),
 };
