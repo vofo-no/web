@@ -1,5 +1,15 @@
 {
   "name": "shared",
   "version": "0.1.0",
-  "private": true
+  "private": true,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "sanity-codegen": "^0.9.8",
+    "typescript": "^4.5.5"
+  }
 }
