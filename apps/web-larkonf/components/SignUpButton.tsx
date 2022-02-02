@@ -1,4 +1,4 @@
-import { Button } from "design";
+import { Button } from "@vofo-no/ui";
 
 interface SignUpButtonProps {
   registerUrl?: string;

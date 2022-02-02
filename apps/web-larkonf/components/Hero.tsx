@@ -1,4 +1,4 @@
-import { Hero, Text } from "design";
+import { Hero, Text } from "@vofo-no/ui";
 import imageUrlBuilder from "@sanity/image-url";
 import client from "../client";
 import { format, isSameDay, isSameMonth } from "date-fns";

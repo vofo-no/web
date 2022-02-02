@@ -6,7 +6,7 @@ import {
   NavItem,
   Button,
   Footer,
-} from "design";
+} from "@vofo-no/ui";
 import MyHero from "./Hero";
 import FooterSponsor from "./FooterSponsor";
 import { PropsWithChildren } from "react";

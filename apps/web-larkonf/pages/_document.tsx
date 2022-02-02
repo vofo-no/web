@@ -1,4 +1,4 @@
-import { global } from "design";
+import { global } from "@vofo-no/ui";
 import Document, {
   DocumentContext,
   Html,

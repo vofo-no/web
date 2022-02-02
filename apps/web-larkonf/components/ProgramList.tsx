@@ -1,4 +1,4 @@
-import { Box } from "design";
+import { Box } from "@vofo-no/ui";
 import { LarKonfQueryResult } from "../queries/larkonfQuery";
 import ProgramListEntry from "./ProgramListEntry";
 import Subheader from "./Subheader";

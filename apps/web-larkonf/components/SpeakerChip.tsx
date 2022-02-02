@@ -1,5 +1,5 @@
 import imageUrlBuilder from "@sanity/image-url";
-import { Avatar, Flex, Text } from "design";
+import { Avatar, Flex, Text } from "@vofo-no/ui";
 import client from "../client";
 import { EventSpeakerWithPerson } from "../queries/larkonfQuery";
 

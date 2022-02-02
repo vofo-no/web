@@ -1,4 +1,4 @@
-import { Flex, Grid, Text, TextStyles } from "design";
+import { Flex, Grid, Text, TextStyles } from "@vofo-no/ui";
 import format from "date-fns/format";
 import parseISO from "date-fns/parseISO";
 import { LarKonfQueryResult } from "../queries/larkonfQuery";

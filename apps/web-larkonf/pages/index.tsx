@@ -3,7 +3,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import isFuture from "date-fns/isFuture";
 import isToday from "date-fns/isToday";
 import parseISO from "date-fns/parseISO";
-import { Box, TextStyles } from "design";
+import { Box, TextStyles } from "@vofo-no/ui";
 import { NextSeo, EventJsonLd } from "next-seo";
 
 import Layout from "../components/Layout";

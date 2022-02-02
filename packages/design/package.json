@@ -1,25 +1,29 @@
 {
   "version": "0.1.0",
+  "name": "@vofo-no/ui",
+  "exports": {
+    ".": {
+      "require": "./dist/design.cjs",
+      "default": "./dist/design.modern.js"
+    },
+    "./tailwind.css": "./dist/tailwind.css"
+  },
+  "main": "./dist/design.cjs",
+  "module": "./dist/design.module.js",
+  "unpkg": "./dist/design.umd.js",
   "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
-    "dist",
-    "dist/tailwind.css",
-    "src"
+    "README.md",
+    "dist"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build && yarn run build-tailwind",
-    "build-tailwind": "cross-env NODE_ENV=production npx tailwindcss -i ./src/styles/global.css -o ./dist/tailwind.css --minify",
-    "test": "tsdx test --passWithNoTests",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
-    "size": "size-limit",
-    "analyze": "size-limit --why",
+    "build": "microbundle src/index.ts --jsx React.createElement && yarn build:tailwind",
+    "build:tailwind": "cross-env NODE_ENV=production npx tailwindcss -i ./src/styles/global.css -o ./dist/tailwind.css --minify",
+    "lint": "eslint",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -28,26 +32,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint"
+      "pre-commit": "eslint"
     }
   },
-  "name": "design",
   "author": "Mats Grimsgaard",
-  "module": "dist/design.esm.js",
-  "size-limit": [
-    {
-      "path": "dist/design.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/design.esm.js",
-      "limit": "10 KB"
-    }
-  ],
   "devDependencies": {
     "@babel/core": "^7.16.7",
-    "@mdx-js/react": "^1.6.22",
-    "@size-limit/preset-big-lib": "^7.0.5",
     "@storybook/addon-actions": "^6.4.9",
     "@storybook/addon-docs": "^6.4.9",
     "@storybook/addon-essentials": "^6.4.9",
@@ -61,17 +51,21 @@
     "@types/node": "^17.0.7",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.10.2",
+    "@typescript-eslint/parser": "^5.10.2",
     "autoprefixer": "^10.4.1",
     "babel-loader": "^8.2.3",
     "cross-env": "^7.0.3",
+    "eslint": "^8.8.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.5",
+    "microbundle": "^0.14.2",
     "postcss": "^8.4.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "size-limit": "^7.0.5",
     "tailwindcss": "^3.0.8",
-    "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
     "typescript": "^4.5.4",
     "webpack": "^5.65.0"

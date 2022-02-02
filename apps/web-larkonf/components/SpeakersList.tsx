@@ -3,7 +3,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import client from "../client";
 
 import { LarKonfQueryResult } from "../queries/larkonfQuery";
-import { Avatar, Box, Flex, Grid, Text } from "design";
+import { Avatar, Box, Flex, Grid, Text } from "@vofo-no/ui";
 
 const builder = imageUrlBuilder(client);
 

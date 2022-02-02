@@ -1,4 +1,4 @@
-import { Text } from "design";
+import { Text } from "@vofo-no/ui";
 import { PropsWithChildren } from "react";
 
 function Subheader({ children }: PropsWithChildren<{}>): JSX.Element {

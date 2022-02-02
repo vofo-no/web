@@ -1,4 +1,4 @@
-import { Flex } from "design";
+import { Flex } from "@vofo-no/ui";
 import Image from "next/image";
 
 const FooterSponsor = (): JSX.Element => (
