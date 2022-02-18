@@ -2,10 +2,12 @@
   "name": "root",
   "private": true,
   "devDependencies": {
+    "@auto-it/conventional-commits": "^10.32.6",
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
     "cz-conventional-changelog": "3.3.0",
     "husky": "^7.0.4",
+    "lerna": "^4.0.0",
     "turbo": "^1.1.1",
     "typescript": ">=3.0.0"
   },
@@ -14,6 +16,7 @@
     "apps/*"
   ],
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
@@ -24,5 +27,14 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "packageManager": "yarn@1.18.0"
+  "packageManager": "yarn@1.18.0",
+  "repository": "vofo-no/web",
+  "author": "Mats Grimsgaard <mats.grimsgaard@vofo.no>",
+  "auto": {
+    "plugins": [
+      "npm",
+      "conventional-commits"
+    ],
+    "onlyPublishWithReleaseLabel": true
+  }
 }
