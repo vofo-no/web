@@ -18,7 +18,7 @@
     "dist"
   ],
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "scripts": {
     "build": "microbundle src/index.ts --jsx React.createElement && yarn build:tailwind",
