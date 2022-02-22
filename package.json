@@ -36,9 +36,5 @@
       "conventional-commits"
     ],
     "onlyPublishWithReleaseLabel": true
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
   }
 }
