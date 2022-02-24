@@ -7,7 +7,7 @@
       "default": "./dist/design.modern.js"
     },
     "./tailwind.css": "./dist/tailwind.css",
-    "./tailwind-base.js": "./dist/tailwind-base.js"
+    "./tailwind-base": "./dist/tailwind-base.js"
   },
   "main": "./dist/design.cjs",
   "module": "./dist/design.module.js",
