@@ -1,6 +1,6 @@
 import Script from "next/script";
 import { DefaultSeo } from "next-seo";
-import "@vofo-no/ui/tailwind.css";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
