@@ -14,7 +14,7 @@ export const NavItem = ({
   ...props
 }: PropsWithChildren<NavItemProps & JSX.IntrinsicElements["a"]>) => (
   <a
-    className={classNames("px-2 py-1 text-black hover:text-dark-red-darker", {
+    className={classNames("px-2 py-1 text-black hover:text-primary-darker", {
       "hidden tablet:block": showDesktop,
       "block tablet:hidden": showMobile,
       block: !showMobile && !showDesktop,

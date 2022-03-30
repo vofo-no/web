@@ -53,17 +53,17 @@ export const Button = <T extends ElementType = "button">({
           "text-base px-5 py-3": size === "medium",
           "text-lg px-6 py-4": size === "large",
           "text-xl px-8 py-6": size === "xlarge",
-          "bg-dark-red text-white hover:text-white border-transparent hover:bg-dark-red-darker disabled:bg-dark-red":
+          "bg-primary text-white hover:text-white border-transparent hover:bg-primary-darker disabled:bg-primary":
             variant === "primary",
-          "bg-teal text-white hover:text-white border-transparent hover:bg-teal-darker disabled:bg-teal":
+          "bg-secondary text-white hover:text-white border-transparent hover:bg-secondary-darker disabled:bg-secondary":
             variant === "secondary",
-          "bg-white text-dark-red border-dark-red hover:text-dark-red-darker hover:border-dark-red-darker disabled:text-dark-red disabled:border-dark-red":
+          "bg-white text-primary border-primary hover:text-primary-darker hover:border-primary-darker disabled:text-primary disabled:border-primary":
             variant === "outline",
-          "bg-transparent text-black border-transparent hover:text-dark-red-darker disabled:text-dark-red":
+          "bg-transparent text-black border-transparent hover:text-primary-darker disabled:text-primary":
             variant === "text",
-          "bg-transparent text-black border-transparent uppercase -m-2 hover:text-dark-red-darker disabled:text-dark-red":
+          "bg-transparent text-black border-transparent uppercase -m-2 hover:text-primary-darker disabled:text-primary":
             variant === "menu",
-          "bg-gray-900 text-black hover:text-black border-transparent hover:bg-gray-800 disabled:bg-gray-900":
+          "bg-gray-200 text-black hover:text-black border-transparent hover:bg-gray-300 disabled:bg-gray-100":
             variant === "default",
         }
       )}
@@ -81,19 +81,19 @@ export const Button = <T extends ElementType = "button">({
           <div className="w-10">
             <div
               className={classNames(
-                "rounded h-1 my-2 bg-gray-200 group-hover:bg-dark-red-darker ease-in-out duration-300",
+                "rounded h-1 my-2 bg-gray-700 group-hover:bg-primary-darker ease-in-out duration-300",
                 { "translate-y-3 rotate-[135deg]": isOpen }
               )}
             />
             <div
               className={classNames(
-                "rounded h-1 my-2 bg-gray-200 group-hover:bg-dark-red-darker ease-in-out duration-300",
+                "rounded h-1 my-2 bg-gray-700 group-hover:bg-primary-darker ease-in-out duration-300",
                 { "scale-0": isOpen }
               )}
             />
             <div
               className={classNames(
-                "rounded h-1 my-2 bg-gray-200 group-hover:bg-dark-red-darker ease-in-out duration-300",
+                "rounded h-1 my-2 bg-gray-700 group-hover:bg-primary-darker ease-in-out duration-300",
                 { "-translate-y-3 rotate-[-135deg]": isOpen }
               )}
             />
