@@ -1,5 +1,20 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
+const colors = require("tailwindcss/colors");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const plugin = require("tailwindcss/plugin");
+
+const crimson = {
+  50: "#fee2e9",
+  100: "#eab5c2",
+  200: "#d6899b",
+  300: "#c15c74",
+  400: "#ad304d",
+  500: "#990326",
+  600: "#7c031f",
+  700: "#5e0218",
+  800: "#410210",
+  900: "#230109",
+};
 
 module.exports = {
   mode: "jit",
@@ -11,25 +26,28 @@ module.exports = {
       "full-hd": "1920px",
     },
     colors: {
-      white: "#FFFFFF",
-      "dark-red": "#990326",
-      "dark-red-darker": "#7a021e",
-      salmon: "#ff8c5b",
-      steel: "#00afbb",
-      teal: "#009890",
-      "teal-darker": "#007a73",
-      blue: "#0078a4",
-      yellow: "#ffaa00",
-      green: "#21c149",
-      pink: "#ff4d4d",
-      red: "#ff042a",
-      black: "#212121",
-      gray: {
-        900: "#e3e3e3",
-        800: "#b6b6b6",
-        200: "#2d2d2d",
-      },
       transparent: "transparent",
+      current: "currentColor",
+      white: colors.white,
+      black: colors.black,
+      gray: colors.gray,
+      crimson,
+      teal: colors.teal,
+      blue: colors.blue,
+      amber: colors.amber,
+      primary: crimson[500],
+      "primary-darker": crimson[600],
+      secondary: "#009890",
+      "secondary-darker": colors.teal[700],
+      brand: {
+        salmon: "#ff8c5b",
+        steel: "#00afbb",
+        blue: "#0078a4",
+        yellow: "#ffaa00",
+        green: "#21c149",
+        pink: "#ff4d4d",
+        red: "#ff042a",
+      },
     },
     fontFamily: {
       lato: "Lato, sans-serif",
@@ -45,6 +63,9 @@ module.exports = {
         "92-auto": "92px auto",
         "200-auto": "200px auto",
       },
+      colors: {
+        teal: { 600: "#009890" },
+      },
     },
   },
   plugins: [
@@ -55,7 +76,7 @@ module.exports = {
       addBase({
         body: {
           fontFamily: theme("fontFamily.lato"),
-          backgroundColor: "#e3e3e3",
+          backgroundColor: theme("colors.gray.200"),
           overflowY: "auto",
           overflowX: "hidden",
           webkitFontSmoothing: "antialiased",
@@ -68,10 +89,10 @@ module.exports = {
         h2: { fontFamily: theme("fontFamily.open-sans") },
         h3: { fontFamily: theme("fontFamily.open-sans") },
         h4: { fontFamily: theme("fontFamily.open-sans") },
-        a: { color: theme("colors.blue") },
-        "a:hover": { color: theme("colors.dark-red-darker") },
-        ".dark a": { color: theme("colors.white") },
-        ".dark a:hover": { color: theme("colors.yellow") },
+        a: { color: theme("colors.brand.blue") },
+        "a:hover": { color: theme("colors.crimson.600") },
+        ".dark a": { color: theme("colors.amber.200") },
+        ".dark a:hover": { color: theme("colors.amber.400") },
         "button, input, textarea, select": { fontFamily: "inherit" },
       });
     }),
