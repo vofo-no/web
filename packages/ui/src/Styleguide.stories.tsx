@@ -6,15 +6,15 @@ export default {
 
 const COLORS = {
   white: "bg-white",
-  "dark-red": "bg-dark-red",
-  salmon: "bg-salmon",
-  steel: "bg-steel",
-  teal: "bg-teal",
-  blue: "bg-blue",
-  yellow: "bg-yellow",
-  green: "bg-green",
-  pink: "bg-pink",
-  red: "bg-red",
+  primary: "bg-primary",
+  secondary: "bg-secondary",
+  "brand-salmon": "bg-brand-salmon",
+  "brand-steel": "bg-brand-steel",
+  "brand-blue": "bg-brand-blue",
+  "brand-yellow": "bg-brand-yellow",
+  "brand-green": "bg-brand-green",
+  "brand-pink": "bg-brand-pink",
+  "brand-red": "bg-brand-red",
   black: "bg-black",
 };
 
@@ -22,7 +22,7 @@ export const StyleGuide = () => (
   <div className="prose desktop:prose-xl max-w-none">
     <h1>Style guide</h1>
     <h2>Colors</h2>
-    <div className="grid tablet:grid-cols-6 desktop:grid-cols-8 grid-cols-4 gap-5">
+    <div className="grid tablet:grid-cols-6 bg-br desktop:grid-cols-8 grid-cols-4 gap-5">
       {Object.keys(COLORS).map((color) => (
         <div key={color} className="text-center">
           {color}

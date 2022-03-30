@@ -26,7 +26,7 @@ function SpeakerChip({
         <Text as="h4" size="base" style={{ margin: 0, whiteSpace: "nowrap" }}>
           {name}
         </Text>
-        <Text className="text-gray-200" as="div" size="sm">
+        <Text className="text-gray-600" as="div" size="sm">
           {role}
         </Text>
       </div>

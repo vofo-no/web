@@ -24,7 +24,7 @@ export const Hero = ({
   isStack,
   children,
 }: PropsWithChildren<HeroProps>) => (
-  <div className="bg-gray-200 relative">
+  <div className="bg-gray-800 relative">
     <div
       className={classNames(
         "aspect-4/3 tablet:aspect-video mx-auto max-w-[1920px] w-full relative overflow-hidden",
