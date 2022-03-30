@@ -1,3 +1,17 @@
+# (Wed Mar 30 2022)
+
+#### 🚀 Enhancement
+
+- `@vofo-no/ui@0.3.0`
+  - Feat(UI): improve theme colors [#4](https://github.com/vofo-no/web/pull/4) ([@mgrim](https://github.com/mgrim))
+  - Feat(UI): improve theme colors [#3](https://github.com/vofo-no/web/pull/3) ([@mgrim](https://github.com/mgrim))
+
+#### Authors: 1
+
+- Mats Grimsgaard ([@mgrim](https://github.com/mgrim))
+
+---
+
 # (Thu Feb 24 2022)
 
 #### 🚀 Enhancement
