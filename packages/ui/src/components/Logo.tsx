@@ -3,9 +3,10 @@ import classNames from "classnames";
 
 export interface LogoProps {
   variant?: "header" | "default";
+  className?: string;
 }
 
-export const Logo = ({ variant = "default" }: LogoProps) => (
+export const Logo = ({ variant = "default", className }: LogoProps) => (
   <svg
     version="1.1"
     id="Layer_1"
@@ -16,10 +17,13 @@ export const Logo = ({ variant = "default" }: LogoProps) => (
     y="0px"
     viewBox="0 0 218 84.1"
     enableBackground="new 0 0 218 84.1"
-    className={classNames({
-      "w-[160px] desktop:w-[218px]": variant === "header",
-      "w-[218px]": variant === "default",
-    })}
+    className={
+      className ||
+      classNames({
+        "w-[160px] desktop:w-[218px]": variant === "header",
+        "w-[218px]": variant === "default",
+      })
+    }
   >
     <title>Vofo logo</title>
     <g>
