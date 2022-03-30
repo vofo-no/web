@@ -5013,13 +5013,6 @@
     "@typescript-eslint/types" "5.17.0"
     eslint-visitor-keys "^3.0.0"
 
-"@vofo-no/ui@^0.3.0-canary.4.5ff7a24.0":
-  version "0.3.0-canary.4.5ff7a24.0"
-  resolved "https://registry.yarnpkg.com/@vofo-no/ui/-/ui-0.3.0-canary.4.5ff7a24.0.tgz#b255111f60f95da550a5654d4a89a673f86d9bf4"
-  integrity sha512-vnqTh5OiIcq2VV48GPsy+a8lciyp6fkPGpRszOVBxVS7DGsqTB+ojMTDDxH7vQyPzdLdgTHrH/Qikogw4OEQ/A==
-  dependencies:
-    classnames "^2.3.1"
-
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.11.1.tgz#2bfd767eae1a6996f432ff7e8d7fc75679c0b6a7"
