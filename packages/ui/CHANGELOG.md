@@ -1,3 +1,16 @@
+# v0.4.0 (Tue Apr 05 2022)
+
+#### 🚀 Enhancement
+
+- feat: add default link colors to typography [#5](https://github.com/vofo-no/web/pull/5) ([@mgrim](https://github.com/mgrim))
+- feat: add default link colors to typography ([@mgrim](https://github.com/mgrim))
+
+#### Authors: 1
+
+- Mats Grimsgaard ([@mgrim](https://github.com/mgrim))
+
+---
+
 # v0.3.0 (Wed Mar 30 2022)
 
 #### 🚀 Enhancement

@@ -1,3 +1,16 @@
+# (Tue Apr 05 2022)
+
+#### 🚀 Enhancement
+
+- `@vofo-no/ui@0.4.0`
+  - feat: add default link colors to typography [#5](https://github.com/vofo-no/web/pull/5) ([@mgrim](https://github.com/mgrim))
+
+#### Authors: 1
+
+- Mats Grimsgaard ([@mgrim](https://github.com/mgrim))
+
+---
+
 # (Wed Mar 30 2022)
 
 #### 🚀 Enhancement
