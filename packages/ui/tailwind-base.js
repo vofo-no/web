@@ -66,6 +66,31 @@ module.exports = {
       colors: {
         teal: { 600: "#009890" },
       },
+      typography: ({ theme }) => ({
+        gray: {
+          css: {
+            "--tw-prose-links": theme("colors.brand.blue"),
+            "--tw-prose-links-hover": theme("colors.crimson.600"),
+            "--tw-prose-invert-links": theme("colors.amber.200"),
+            "--tw-prose-invert-links-hover": theme("colors.amber.400"),
+          },
+        },
+        invert: {
+          css: {
+            "--tw-prose-links-hover": "var(--tw-prose-invert-links-hover)",
+          },
+        },
+        DEFAULT: {
+          css: {
+            a: {
+              color: "var(--tw-prose-links)",
+              "&:hover": {
+                color: "var(--tw-prose-links-hover)",
+              },
+            },
+          },
+        },
+      }),
     },
   },
   plugins: [
