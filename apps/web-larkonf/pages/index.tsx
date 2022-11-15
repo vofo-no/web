@@ -21,11 +21,12 @@ export async function getStaticProps() {
     larkonfEvent.schedule.from && parseISO(larkonfEvent.schedule.from);
 
   const extra = {
-    showSignUp: larkonfEvent.registerUrl && start && isFuture(start),
-    showVideoPlayer:
+    showSignUp: !!(larkonfEvent.registerUrl && start && isFuture(start)),
+    showVideoPlayer: !!(
       larkonfEvent.youTubeVideoId &&
       start &&
-      (isToday(start) || !isFuture(start)),
+      (isToday(start) || !isFuture(start))
+    ),
   };
   return { props: { ...larkonfEvent, ...extra }, revalidate: 60 };
 }
@@ -78,7 +79,7 @@ export default function Home(props: IndexPageProps) {
           location={{ name: props.venue.name, address: props.venue.address }}
           images={[builder.image(props.image).width(1200).height(630).url()]}
           description={props.description}
-          performers={props.mainSpeakers.map((speaker) => ({
+          performers={props.mainSpeakers?.map((speaker) => ({
             name: speaker.person.name,
           }))}
         />

@@ -6,7 +6,7 @@ import Subheader from "./Subheader";
 function ProgramList({
   program,
 }: Pick<LarKonfQueryResult["larkonfEvent"], "program">): JSX.Element {
-  if (program?.length === 0) {
+  if (!program || program.length === 0) {
     return null;
   }
 
