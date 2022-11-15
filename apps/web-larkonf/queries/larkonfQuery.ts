@@ -1,9 +1,7 @@
 import groq from "groq";
 import {
-  Campaign,
   Event,
   Venue,
-  Organization,
   ProgramItem,
   PersonDoc,
   EventSpeaker,
@@ -22,8 +20,6 @@ export const LarKonfQuery = groq`
         registerUrl,
         youTubeVideoId,
         venue->,
-        campaign->,
-        organizations[]->
     }
 }`;
 
@@ -49,7 +45,5 @@ export interface LarKonfQueryResult {
     program?: Array<ProgramItemWithSpeakers>;
     mainSpeakers?: Array<EventSpeakerWithPerson>;
     venue?: Venue;
-    campaign?: Campaign;
-    organizations?: Array<Organization>;
   };
 }
