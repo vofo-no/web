@@ -18,7 +18,7 @@ interface HeroProps2
     | "start"
     | "end"
     | "mainSpeakers"
-    | "venue"
+    | "location"
     | "program"
     | "registerUrl"
     | "youTubeVideoId"
@@ -67,7 +67,7 @@ function MyHero({
   image,
   start,
   end,
-  venue,
+  location,
   registerUrl,
   youTubeVideoId,
   showSignUp,
@@ -109,7 +109,7 @@ function MyHero({
             size="2xl"
           >
             <TextOnImg>
-              {[venue?.name, humanDateRange(start, end)]
+              {[location?.name, humanDateRange(start, end)]
                 .filter(Boolean)
                 .join(", ")}
             </TextOnImg>
