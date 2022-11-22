@@ -12,7 +12,7 @@ import FooterSponsor from "./FooterSponsor";
 import { PropsWithChildren } from "react";
 import { IndexPageProps } from "../pages";
 
-export interface LayoutProps extends IndexPageProps {
+export interface LayoutProps extends Omit<IndexPageProps, "start" | "end"> {
   start: Date;
   end: Date;
 }
