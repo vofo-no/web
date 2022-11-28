@@ -15,6 +15,7 @@ export const LarKonfQuery = groq`
         start,
         end,
         location,
+        programStatus,
         program[]{ ..., speakers[]{ ..., person-> }},
         mainSpeakers[]{ ..., person-> },
         image,
@@ -44,6 +45,7 @@ export interface LarKonfQueryResult {
       name?: string;
       address?: string;
     };
+    programStatus?: "draft" | "temp" | "final";
     program?: Array<ProgramItemWithSpeakers>;
     mainSpeakers?: Array<EventSpeakerWithPerson>;
     body?: SanityBlock;

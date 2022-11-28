@@ -22,7 +22,7 @@ function Layout(props: PropsWithChildren<LayoutProps>): JSX.Element {
     <>
       <Header logo={<Logo variant="header" />}>
         <NavMenu alignRight>
-          {props.program && (
+          {props.program && props.programStatus === "final" && (
             <NavItem showDesktop href="#program">
               Program
             </NavItem>

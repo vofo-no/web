@@ -116,8 +116,11 @@ export default function Home(props: IndexPageProps) {
           registerUrl={props.registerUrl}
           showSignUp={props.showSignUp}
         />
-        <ProgramList program={props.program} />
         <SpeakersList mainSpeakers={props.mainSpeakers} />
+        <ProgramList
+          program={props.program}
+          programStatus={props.programStatus}
+        />
         <SignUpButton
           registerUrl={props.registerUrl}
           showSignUp={props.showSignUp}
