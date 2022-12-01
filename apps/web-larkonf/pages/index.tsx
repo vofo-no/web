@@ -5,6 +5,7 @@ import isToday from "date-fns/isToday";
 import parseISO from "date-fns/parseISO";
 import { Box, TextStyles } from "@vofo-no/ui";
 import { NextSeo, EventJsonLd } from "next-seo";
+import { FaMapMarkerAlt, FaRegClock } from "react-icons/fa";
 
 import Layout from "../components/Layout";
 import client from "../client";
@@ -12,20 +13,21 @@ import ProgramList from "../components/ProgramList";
 import SpeakersList from "../components/SpeakersList";
 import SignUpButton from "../components/SignUpButton";
 import { LarKonfQuery, LarKonfQueryResult } from "../queries/larkonfQuery";
+import humanTimeRange from "../lib/humanTimeRange";
 
 const builder = imageUrlBuilder(client);
 
 export async function getStaticProps() {
   const { larkonfEvent } = await client.fetch<LarKonfQueryResult>(LarKonfQuery);
-  const start =
-    larkonfEvent.schedule.from && parseISO(larkonfEvent.schedule.from);
+  const start = larkonfEvent.start && parseISO(larkonfEvent.start);
 
   const extra = {
-    showSignUp: larkonfEvent.registerUrl && start && isFuture(start),
-    showVideoPlayer:
+    showSignUp: !!(larkonfEvent.registerUrl && start && isFuture(start)),
+    showVideoPlayer: !!(
       larkonfEvent.youTubeVideoId &&
       start &&
-      (isToday(start) || !isFuture(start)),
+      (isToday(start) || !isFuture(start))
+    ),
   };
   return { props: { ...larkonfEvent, ...extra }, revalidate: 60 };
 }
@@ -61,8 +63,8 @@ export default function Home(props: IndexPageProps) {
       ]
     : [];
 
-  const start = parseISO(props.schedule.from);
-  const end = parseISO(props.schedule.to);
+  const start = parseISO(props.start);
+  const end = parseISO(props.end);
   return (
     <Layout {...props} start={start} end={end}>
       <NextSeo
@@ -70,24 +72,43 @@ export default function Home(props: IndexPageProps) {
         description={props.description}
         openGraph={{ images: openGraphImages }}
       />
-      {props.venue?.address && (
+      {props.location?.address && (
         <EventJsonLd
           name={props.title}
-          startDate={props.schedule.from}
-          endDate={props.schedule.to}
-          location={{ name: props.venue.name, address: props.venue.address }}
+          startDate={props.start}
+          endDate={props.end}
+          location={{
+            name: props.location.name,
+            address: props.location.address,
+          }}
           images={[builder.image(props.image).width(1200).height(630).url()]}
           description={props.description}
-          performers={props.mainSpeakers.map((speaker) => ({
+          performers={props.mainSpeakers?.map((speaker) => ({
             name: speaker.person.name,
           }))}
         />
       )}
       <main>
-        {props.info && (
+        {props.body && (
           <TextStyles center>
             <Box>
-              <BlockContent blocks={props.info} />
+              {props.location?.address && (
+                <div className="flex justify-start items-center gap-4 my-3">
+                  <span>
+                    <FaMapMarkerAlt size={20} />
+                  </span>
+                  <span>{props.location.address}</span>
+                </div>
+              )}
+              {props.start && props.end && (
+                <div className="flex justify-start items-center gap-4 my-3">
+                  <span>
+                    <FaRegClock size={20} />
+                  </span>
+                  <span>{humanTimeRange(start, end)}</span>
+                </div>
+              )}
+              <BlockContent blocks={props.body} />
             </Box>
           </TextStyles>
         )}
@@ -95,8 +116,11 @@ export default function Home(props: IndexPageProps) {
           registerUrl={props.registerUrl}
           showSignUp={props.showSignUp}
         />
-        <ProgramList program={props.program} />
         <SpeakersList mainSpeakers={props.mainSpeakers} />
+        <ProgramList
+          program={props.program}
+          programStatus={props.programStatus}
+        />
         <SignUpButton
           registerUrl={props.registerUrl}
           showSignUp={props.showSignUp}

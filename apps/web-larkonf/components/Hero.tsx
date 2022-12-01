@@ -13,12 +13,11 @@ interface HeroProps2
   extends Pick<
     LayoutProps,
     | "title"
-    | "description"
     | "image"
     | "start"
     | "end"
     | "mainSpeakers"
-    | "venue"
+    | "location"
     | "program"
     | "registerUrl"
     | "youTubeVideoId"
@@ -63,11 +62,10 @@ function TextOnImg({ children }: { children: string }): JSX.Element {
 
 function MyHero({
   title,
-  description,
   image,
   start,
   end,
-  venue,
+  location,
   registerUrl,
   youTubeVideoId,
   showSignUp,
@@ -98,10 +96,6 @@ function MyHero({
           <Text as="h1" style={{ margin: "2em 0 0" }} size="4xl">
             <TextOnImg>{title}</TextOnImg>
           </Text>
-          <Text as="p" style={{ margin: 0 }} className="text-white" size="2xl">
-            <TextOnImg>{description}</TextOnImg>
-          </Text>
-
           <Text
             as="p"
             style={{ margin: "1.5rem 0 0" }}
@@ -109,7 +103,7 @@ function MyHero({
             size="2xl"
           >
             <TextOnImg>
-              {[venue?.name, humanDateRange(start, end)]
+              {[location?.name, humanDateRange(start, end)]
                 .filter(Boolean)
                 .join(", ")}
             </TextOnImg>

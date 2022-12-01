@@ -1,29 +1,28 @@
 import groq from "groq";
 import {
-  Campaign,
   Event,
-  Venue,
-  Organization,
   ProgramItem,
   PersonDoc,
   EventSpeaker,
+  SanityBlock,
 } from "shared/dist/schema";
 
 export const LarKonfQuery = groq`
-*[_id == "global-config"][0] {
+*[_id == "siteSettings"][0] {
     larkonfEvent->{
         title,
         description,
-        schedule,
+        start,
+        end,
+        location,
+        programStatus,
         program[]{ ..., speakers[]{ ..., person-> }},
         mainSpeakers[]{ ..., person-> },
         image,
         info,
+        body,
         registerUrl,
         youTubeVideoId,
-        venue->,
-        campaign->,
-        organizations[]->
     }
 }`;
 
@@ -38,18 +37,17 @@ export interface ProgramItemWithSpeakers extends Omit<ProgramItem, "speakers"> {
 export interface LarKonfQueryResult {
   larkonfEvent?: Pick<
     Event,
-    | "title"
-    | "description"
-    | "schedule"
-    | "image"
-    | "info"
-    | "registerUrl"
-    | "youTubeVideoId"
+    "title" | "description" | "image" | "registerUrl" | "youTubeVideoId"
   > & {
+    start?: string;
+    end?: string;
+    location?: {
+      name?: string;
+      address?: string;
+    };
+    programStatus?: "draft" | "temp" | "final";
     program?: Array<ProgramItemWithSpeakers>;
     mainSpeakers?: Array<EventSpeakerWithPerson>;
-    venue?: Venue;
-    campaign?: Campaign;
-    organizations?: Array<Organization>;
+    body?: SanityBlock;
   };
 }

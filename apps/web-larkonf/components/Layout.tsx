@@ -12,7 +12,7 @@ import FooterSponsor from "./FooterSponsor";
 import { PropsWithChildren } from "react";
 import { IndexPageProps } from "../pages";
 
-export interface LayoutProps extends IndexPageProps {
+export interface LayoutProps extends Omit<IndexPageProps, "start" | "end"> {
   start: Date;
   end: Date;
 }
@@ -22,7 +22,7 @@ function Layout(props: PropsWithChildren<LayoutProps>): JSX.Element {
     <>
       <Header logo={<Logo variant="header" />}>
         <NavMenu alignRight>
-          {props.program && (
+          {props.program && props.programStatus === "final" && (
             <NavItem showDesktop href="#program">
               Program
             </NavItem>
