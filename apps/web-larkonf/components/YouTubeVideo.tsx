@@ -7,7 +7,7 @@ export const YouTubeVideo = ({ videoId }: YouTubeVideoProps) => (
     <iframe
       width="645"
       height="363"
-      src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
+      src={`https://www.youtube.com/embed/${videoId}?rel=0&cc_load_policy=1&modestbranding=1`}
       frameBorder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowFullScreen
